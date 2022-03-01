@@ -88,6 +88,15 @@ const testData = {
       "status": "approved",
       "suggestedActivities": []
     }, {
+      "id": 171,
+      "userID": 2,
+      "destinationID": 43,
+      "travelers": 1,
+      "date": "2020/12/27",
+      "duration": 18,
+      "status": "pending",
+      "suggestedActivities": []
+    }, {
       "id": 166,
       "userID": 2,
       "destinationID": 7,
