@@ -7,6 +7,7 @@ describe('Trip', () => {
   let trip1;
   let trip2;
   let trip3;
+  let trip4;
   let tripData;
 
   beforeEach(() => {
@@ -14,6 +15,7 @@ describe('Trip', () => {
     trip1 = new Trip(tripData[0]);
     trip2 = new Trip(tripData[1]);
     trip3 = new Trip(tripData[2]);
+    trip4 = new Trip(tripData[3]);
   })
 
   it('should be a function', () => {
@@ -50,6 +52,7 @@ describe('Trip', () => {
 
   it('should keep track of its approval status', () => {
     expect(trip3.status).to.equal('approved');
+    expect(trip4.status).to.equal('pending');
   })
 
   it('should be able to hold suggested activities', () => {
