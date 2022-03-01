@@ -25,7 +25,7 @@ describe('Destination', () => {
   })
 
   it('should have an id', () => {
-    expect(destination1.id)to.equal(7);
+    expect(destination1.id).to.equal(7);
   })
 
   it('should have a location', () => {
