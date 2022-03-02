@@ -30,6 +30,7 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
 
 function updateDashboard() {
   domUpdates.renderName(traveler.name);
+  domUpdates.renderUpcomingTrips(traveler.trips);
 }
 
 // event listeners
