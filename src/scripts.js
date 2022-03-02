@@ -39,10 +39,14 @@ function updateDashboard() {
 
 function getAnnualTravelExpenses() {
   const currentYear = (new Date()).getFullYear().toString();
-  console.log(currentYear);
   const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear));
-  console.log(tripsThisYear);
-  domUpdates.renderAnnualTravelExpenses(traveler);
+  if (tripsThisYear.length) {
+    const totalCost = tripsThisYear.reduce((acc, trip) => {
+      acc += (trip.duration * trip.destination.estimatedLodgingCostPerDay) + (trip.travelers * trip.destination.estimatedFlightCostPerPerson);
+      return acc;
+    }, 0);
+    domUpdates.renderAnnualTravelExpenses(totalCost);
+  }
 }
 
 // event listeners
