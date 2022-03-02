@@ -1,6 +1,6 @@
 body {
   background-color: #eeeff3;
-  font-family: sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   margin: 0;
 }
 
@@ -73,6 +73,7 @@ button {
 .past-and-expenses {
   display: flex;
   justify-content: space-evenly;
+  width: 800px;
 }
 
 .upcoming-and-pending {
