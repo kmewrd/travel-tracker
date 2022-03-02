@@ -1,5 +1,6 @@
 import './css/styles.css';
 import {fetchData, postData} from './apiCalls';
+import domUpdates from './domUpdates';
 import Traveler from './Traveler';
 import Destination from './Destination';
 import Trip from './Trip';
@@ -27,6 +28,4 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
 }
 
 // event listeners
-window.addEventListener('load', function() {
-  fetchAllData();
-});
+window.addEventListener('load', fetchAllData);
