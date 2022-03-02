@@ -75,5 +75,9 @@ button {
 }
 
 .upcoming-and-pending {
+  height: 60%;
+}
 
+.past-and-expenses {
+  height: 40%;
 }
