@@ -4,13 +4,63 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Travel Tracker</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <header>
+    <h1>Travel Tracker</h1>
+    <h2>Welcome, traveler!</h2>
+  </header>
+  <main>
+    <form>
+      <div class="form-container">
+        <h2>Book your next trip</h2>
+        <div class="inputs-container">
+          <label for="start-date">Start date</label>
+          <input id="start-date" name="start-date" type="date">
+          <label for="trip-duration">Duration of stay</label>
+          <input id="trip-duration" name="trip-duration" type="text">
+          <label for="num-guests">Number of guests</label>
+          <input id="num-guests" name="num-guests" type="text">
+          <label for="trip-destination">Destination</label>
+          <select id="trip-destination" name="trip-destination">
+            <option selected disabled>Where are you going?</option>
+          </select>
+        </div>
+        <button class="submit-button">Submit</button>
+      </div>
+    </form>
+    <section class="traveler-details">
+      <div class="upcoming-and-pending">
+        <div class="upcoming-trips-column">
+          <h2>Upcoming trips</h2>
+          <div class="js-upcoming-trips">
+            <p>No trips to display.</p>
+          </div>
+        </div>
+        <div class="pending-trips-column">
+          <h2>Pending trips</h2>
+          <div class="js-pending-trips">
+            <p>No trips to display.</p>
+          </div>
+        </div>
+      </div>
+      <div class="past-and-expenses">
+        <div class="past-trips-column">
+          <h2>Where you've been</h2>
+          <div class="js-past-trips">
+            <p>No trips to display.</p>
+          </div>
+        </div>
+        <div class="expenses-column">
+          <h2>Annual travel expenses</h2>
+          <div class="js-travel-expenses">
+            <p>$0.00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
   <script src="bundle.js"></script>
-
 </body>
 </html>
