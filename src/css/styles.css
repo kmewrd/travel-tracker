@@ -18,14 +18,16 @@ main {
 
 form {
   background-color: #fafbff;
-  width: 300px;
-  height: 100%;
+  width: 400px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-section {
-  background-color: #fafbff;
+input {
+  height: 36px;
+  width: 100%;
 }
 
 article {
@@ -39,6 +41,21 @@ button {
   width: 140px;
   height: 40px;
   font-size: 18px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  width: 300px;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 400px;
+  margin-bottom: 20px;
 }
 
 .traveler-details {
