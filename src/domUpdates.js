@@ -1,4 +1,3 @@
-const pastTrips = document.querySelector('.js-past-trips');
 const travelExpenses = document.querySelector('.js-travel-expenses');
 
 const domUpdates = {
@@ -29,6 +28,23 @@ const domUpdates = {
     trips.forEach(trip => {
       if (trip.status === 'pending') {
         pendingTrips.innerHTML += `
+        <div>
+          <p>Destination: ${trip.destination.location}</p>
+          <p>Start date: ${trip.date}</p>
+          <p>Duration of stay: ${trip.duration} days</p>
+          <p>Number of guests: ${trip.travelers}</p>
+        </div>
+        `
+      }
+    })
+  },
+  renderPastTrips(trips) {
+    // need to get today's date before I can complete this function
+    const pastTrips = document.querySelector('.js-past-trips');
+    pastTrips.innerHTML = '';
+    trips.forEach(trip => {
+      if (trip.status === 'approved') {
+        pastTrips.innerHTML += `
         <div>
           <p>Destination: ${trip.destination.location}</p>
           <p>Start date: ${trip.date}</p>
