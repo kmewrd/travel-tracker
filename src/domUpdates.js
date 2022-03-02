@@ -15,7 +15,7 @@ const domUpdates = {
       if (trip.status === 'approved') {
         upcomingTrips.innerHTML += `
         <div>
-          <p>Destination: ${trip.destinationID}</p>
+          <p>Destination: ${trip.destination.location}</p>
           <p>Start date: ${trip.date}</p>
           <p>Duration of stay: ${trip.duration} days</p>
           <p>Number of guests: ${trip.travelers}</p>
