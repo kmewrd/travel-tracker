@@ -1,17 +1,47 @@
+body {
+  background-color: #eeeff3;
+  font-family: sans-serif;
+}
+
 header {
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid #8e94a3;
 }
 
 main {
   display: flex;
 }
 
+form {
+  background-color: #fafbff;
+  width: 120px;
+  height: 100%;
+}
+
+section {
+  background-color: #fafbff;
+}
+
+article {
+  background-color: #fff;
+}
+
 button {
   background-color: #326BFF;
   color: #fff;
   border: 0;
-  border-radius: 20px;
   width: 140px;
   height: 40px;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+.traveler-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.upcoming-trips {
+
 }
