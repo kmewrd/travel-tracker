@@ -1,5 +1,5 @@
 import './css/styles.css';
-import {fetchData, fetchTravelers, postData} from './apiCalls';
+import {fetchData, postData} from './apiCalls';
 import Traveler from './Traveler';
 import Destination from './Destination';
 import Trip from './Trip';
@@ -24,10 +24,6 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
   destinations = destinationsData.map(destination => new Destination(destination));
   traveler = travelers.find(traveler => traveler.id === travelerID)
   traveler.findMyTrips(trips);
-  console.log(travelers);
-  console.log(trips);
-  console.log(destinations);
-  console.log(traveler);
 }
 
 // event listeners
