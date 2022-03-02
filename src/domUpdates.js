@@ -1,4 +1,3 @@
-const pendingTrips = document.querySelector('.js-pending-trips');
 const pastTrips = document.querySelector('.js-past-trips');
 const travelExpenses = document.querySelector('.js-travel-expenses');
 
@@ -14,6 +13,22 @@ const domUpdates = {
     trips.forEach(trip => {
       if (trip.status === 'approved') {
         upcomingTrips.innerHTML += `
+        <div>
+          <p>Destination: ${trip.destination.location}</p>
+          <p>Start date: ${trip.date}</p>
+          <p>Duration of stay: ${trip.duration} days</p>
+          <p>Number of guests: ${trip.travelers}</p>
+        </div>
+        `
+      }
+    })
+  },
+  renderPendingTrips(trips) {
+    const pendingTrips = document.querySelector('.js-pending-trips');
+    pendingTrips.innerHTML = '';
+    trips.forEach(trip => {
+      if (trip.status === 'pending') {
+        pendingTrips.innerHTML += `
         <div>
           <p>Destination: ${trip.destination.location}</p>
           <p>Start date: ${trip.date}</p>
