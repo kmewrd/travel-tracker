@@ -33,6 +33,7 @@ function updateDashboard() {
   domUpdates.renderName(traveler.name);
   domUpdates.renderPendingTrips(traveler.trips);
   domUpdates.renderPastTrips(traveler.trips);
+  domUpdates.renderAnnualTravelExpenses();
 }
 
 // event listeners

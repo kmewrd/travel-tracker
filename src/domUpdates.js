@@ -58,6 +58,10 @@ const domUpdates = {
         `
       }
     })
+  },
+  renderAnnualTravelExpenses() {
+    const year = (new Date()).getFullYear().toString();
+    console.log(year);
   }
 };
 
