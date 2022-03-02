@@ -29,6 +29,7 @@ input,
 select {
   height: 36px;
   width: 100%;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 article {
@@ -36,6 +37,8 @@ article {
 }
 
 button {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
   background-color: #326BFF;
   color: #fff;
   border: 0;
