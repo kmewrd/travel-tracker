@@ -84,9 +84,9 @@ button {
 }
 
 .upcoming-and-pending {
-  height: 60%;
+  max-height: 1000px;
 }
 
 .past-and-expenses {
-  height: 40%;
+  max-height: 1000px;
 }
