@@ -12,14 +12,16 @@ const domUpdates = {
     const upcomingTrips = document.querySelector('.js-upcoming-trips');
     upcomingTrips.innerHTML = '';
     trips.forEach(trip => {
-      upcomingTrips.innerHTML += `
-      <div>
-        <p>Destination: ${trip.destinationID}</p>
-        <p>Start date: ${trip.date}</p>
-        <p>Duration of stay: ${trip.duration} days</p>
-        <p>Number of guests: ${trip.travelers}</p>
-      </div>
-      `
+      if (trip.status === 'approved') {
+        upcomingTrips.innerHTML += `
+        <div>
+          <p>Destination: ${trip.destinationID}</p>
+          <p>Start date: ${trip.date}</p>
+          <p>Duration of stay: ${trip.duration} days</p>
+          <p>Number of guests: ${trip.travelers}</p>
+        </div>
+        `
+      }
     })
   }
 };
