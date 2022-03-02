@@ -18,7 +18,7 @@ main {
 
 form {
   background-color: #fafbff;
-  width: 400px;
+  width: 25%;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@ button {
   color: #fff;
   border: 0;
   width: 140px;
-  height: 40px;
+  height: 36px;
   font-size: 18px;
 }
 
@@ -58,11 +58,22 @@ button {
   margin-bottom: 20px;
 }
 
-.traveler-details {
-  display: flex;
-  justify-content: space-around;
+.submit-button {
+  width: 300px;
 }
 
-.upcoming-trips {
+.traveler-details {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.upcoming-and-pending,
+.past-and-expenses {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.upcoming-and-pending {
 
 }
