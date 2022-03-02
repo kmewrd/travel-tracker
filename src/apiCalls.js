@@ -1,6 +1,7 @@
 function fetchData(path) {
   fetch(`http://localhost:3001/api/v1/${path}`)
     .then(response => response.json())
+    .then(data => data[path])
     .catch(err => console.log(err));
 }
 
@@ -14,4 +15,4 @@ function postData(path, data) {
     .catch(err => console.log(err));
 }
 
-export default {fetchData, postData};
+export {fetchData, postData};
