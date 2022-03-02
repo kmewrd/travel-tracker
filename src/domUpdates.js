@@ -42,6 +42,8 @@ const domUpdates = {
   },
   renderPastTrips(trips) {
     // need to get today's date before I can complete this function
+    const today = helperFunctions.getTodayDate();
+    console.log(today);
     const pastTrips = document.querySelector('.js-past-trips');
     pastTrips.innerHTML = '';
     trips.forEach(trip => {

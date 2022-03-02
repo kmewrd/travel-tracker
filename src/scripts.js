@@ -31,8 +31,8 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
 
 function updateDashboard() {
   domUpdates.renderName(traveler.name);
-  domUpdates.renderUpcomingTrips(traveler.trips);
   domUpdates.renderPendingTrips(traveler.trips);
+  domUpdates.renderPastTrips(traveler.trips);
 }
 
 // event listeners
