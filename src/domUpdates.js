@@ -1,7 +1,5 @@
 import helperFunctions from './utils';
 
-const travelExpenses = document.querySelector('.js-travel-expenses');
-
 const domUpdates = {
   renderName(name) {
     const travelerName = document.getElementById('travelerName');
@@ -59,9 +57,9 @@ const domUpdates = {
       }
     })
   },
-  renderAnnualTravelExpenses() {
-    const year = (new Date()).getFullYear().toString();
-    console.log(year);
+  renderAnnualTravelExpenses(traveler) {
+    const travelExpenses = document.querySelector('.js-travel-expenses');
+    
   }
 };
 

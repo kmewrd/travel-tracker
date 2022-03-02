@@ -1,6 +1,7 @@
 import './css/styles.css';
 import {fetchData, postData} from './apiCalls';
 import domUpdates from './domUpdates';
+import helperFunctions from './utils';
 import Traveler from './Traveler';
 import Destination from './Destination';
 import Trip from './Trip';
@@ -33,7 +34,15 @@ function updateDashboard() {
   domUpdates.renderName(traveler.name);
   domUpdates.renderPendingTrips(traveler.trips);
   domUpdates.renderPastTrips(traveler.trips);
-  domUpdates.renderAnnualTravelExpenses();
+  getAnnualTravelExpenses();
+}
+
+function getAnnualTravelExpenses() {
+  const currentYear = (new Date()).getFullYear().toString();
+  console.log(currentYear);
+  const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear));
+  console.log(tripsThisYear);
+  domUpdates.renderAnnualTravelExpenses(traveler);
 }
 
 // event listeners
