@@ -9,6 +9,9 @@ class Trip {
     this.status = data.status;
     this.suggestedActivities = data.suggestedActivities;
   }
+  getDestinationDetails(destinations) {
+    this.destination = destinations.find(destination => destination.id === this.destinationID);
+  }
 }
 
 export default Trip;
