@@ -25,7 +25,8 @@ form {
   align-items: center;
 }
 
-input {
+input,
+select {
   height: 36px;
   width: 100%;
 }
