@@ -16,6 +16,7 @@ function fetchAllData() {
   Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
   .then(data => {
     initializeData(2, data[0], data[1], data[2]);
+    updateDashboard();
   })
 }
 
@@ -25,6 +26,10 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
   destinations = destinationsData.map(destination => new Destination(destination));
   traveler = travelers.find(traveler => traveler.id === travelerID)
   traveler.findMyTrips(trips);
+}
+
+function updateDashboard() {
+  domUpdates.renderName(traveler.name);
 }
 
 // event listeners
