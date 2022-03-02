@@ -6,7 +6,11 @@ class Traveler {
     this.trips = [];
   }
   findMyTrips(trips) {
-    
+    trips.forEach(trip => {
+      if (trip.userID === this.id) {
+        this.trips.push(trip);
+      }
+    });
   }
 }
 

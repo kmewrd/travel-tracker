@@ -51,5 +51,7 @@ describe('Traveler', () => {
     traveler2.findMyTrips(allTrips);
 
     expect(traveler2.trips.length).to.equal(3);
+    expect(traveler2.trips[0]).to.be.an.instanceof(Trip);
+    expect(traveler2.trips[0].destinationID).to.equal(43);
   })
 });
