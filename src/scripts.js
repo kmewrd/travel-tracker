@@ -10,8 +10,12 @@ let trips;
 let destinations;
 
 // functions
-function initializeUserData(travelerId, tripsData) {
-  
+function initializeData(travelerID, travelerData, tripsData, destinationsData) {
+  travelerDetails = travelerData.find(traveler => traveler.id === travelerID);
+  traveler = new Traveler(travelerDetails);
+  trips = tripsData.map(trip => new Trip(trip));
+  destinations = destinationsData.map(destination => new Destination(destination));
+  traveler.findMyTrips(trips);
 }
 
 // event listeners
