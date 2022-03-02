@@ -1,3 +1,5 @@
+const travelerName = document.getElementById('travelerName');
+
 const domUpdates = {
 
 };
