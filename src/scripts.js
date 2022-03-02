@@ -26,6 +26,7 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
   destinations = destinationsData.map(destination => new Destination(destination));
   traveler = travelers.find(traveler => traveler.id === travelerID)
   traveler.findMyTrips(trips);
+  traveler.trips.map(trip => trip.getDestinationDetails(destinations));
 }
 
 function updateDashboard() {
