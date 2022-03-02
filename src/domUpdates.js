@@ -1,3 +1,5 @@
+import helperFunctions from './utils';
+
 const travelExpenses = document.querySelector('.js-travel-expenses');
 
 const domUpdates = {
