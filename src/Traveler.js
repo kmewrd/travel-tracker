@@ -5,6 +5,9 @@ class Traveler {
     this.travelerType = data.travelerType;
     this.trips = [];
   }
+  findMyTrips(trips) {
+    
+  }
 }
 
 export default Traveler;

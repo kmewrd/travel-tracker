@@ -1,6 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Traveler from '../src/Traveler';
+import Trip from '../src/Trip'
 import testData from './data';
 
 describe('Traveler', () => {
@@ -8,12 +9,16 @@ describe('Traveler', () => {
   let traveler2;
   let traveler3;
   let travelerData;
+  let tripData;
+  let allTrips;
 
   beforeEach(() => {
     travelerData = testData.travelers;
+    tripData = testData.trips;
     traveler1 = new Traveler(travelerData[0]);
     traveler2 = new Traveler(travelerData[1]);
     traveler3 = new Traveler(travelerData[2]);
+    allTrips = tripData.map(trip => new Trip(trip));
   })
 
   it('should be a function', () => {
