@@ -44,4 +44,12 @@ describe('Traveler', () => {
   it('should hold all past, present, upcoming, and pending trips', () => {
     expect(traveler1.trips).to.deep.equal([]);
   })
+
+  it('should be able to find all trips belonging to this traveler', () => {
+    expect(traveler2.trips).to.deep.equal([]);
+
+    traveler2.findMyTrips(allTrips);
+
+    expect(traveler2.trips.length).to.equal(3);
+  })
 });
