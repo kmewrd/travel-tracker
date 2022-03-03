@@ -27,7 +27,7 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
   destinations = destinationsData.map(destination => new Destination(destination));
   traveler = travelers.find(traveler => traveler.id === travelerID)
   traveler.findMyTrips(trips);
-  traveler.trips.map(trip => trip.getDestinationDetails(destinations));
+  traveler.findMyDestinations(destinations);
 }
 
 function updateDashboard() {
@@ -45,8 +45,8 @@ function getPastTrips() {
   console.log(myTrips);
   // need some way to compare myTrips[0].date to today and see if it's less than today
   // if trip.date is less than today, then push trip into pastTrips
-  const pastTrips = myTrips.filter(trip => trip.date.includes());
-  domUpdates.renderPastTrips(pastTrips);
+  // const pastTrips = myTrips.filter(trip => trip.date.includes());
+  // domUpdates.renderPastTrips(pastTrips);
 }
 
 function sortByDate(trips) {
