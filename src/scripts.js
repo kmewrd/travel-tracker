@@ -32,9 +32,9 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
 
 function updateDashboard() {
   domUpdates.renderName(traveler.name);
-  domUpdates.renderPendingTrips(traveler.trips);
   getUpcomingTrips();
   getPastTrips();
+  getPendingTrips();
   getAnnualTravelExpenses();
 }
 
@@ -43,12 +43,9 @@ function getUpcomingTrips() {
   const myTrips = [...traveler.trips];
   let upcomingTrips = [];
   myTrips.push(today);
-  console.log(myTrips);
   sortDateLeastRecent(myTrips);
   if (myTrips[myTrips.length - 1] === today) {
     console.log('There are no upcoming trips.')
-    myTrips.pop();
-    // domUpdates.renderPastTrips(pastTrips);
   } else {
     const todayIndex = myTrips.indexOf(today);
     upcomingTrips = myTrips.slice(todayIndex);
@@ -61,7 +58,6 @@ function getPastTrips() {
   const myTrips = [...traveler.trips];
   let pastTrips = [];
   myTrips.push(today);
-  console.log(myTrips);
   sortDateMostRecent(myTrips);
   if (myTrips[0] === today) {
     console.log('All trips are past.')
@@ -70,11 +66,16 @@ function getPastTrips() {
     domUpdates.renderPastTrips(pastTrips);
   } else {
     const todayIndex = myTrips.indexOf(today);
-    console.log(todayIndex);
     pastTrips = myTrips.slice(todayIndex);
     console.log(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
   }
+}
+
+function getPendingTrips() {
+  const myTrips = [...traveler.trips];
+  const pendingTrips = myTrips.filter(trip => trip.status === 'pending');
+  domUpdates.renderPendingTrips(pendingTrips);
 }
 
 function checkDateFormat(trips) {
