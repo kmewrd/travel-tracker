@@ -50,6 +50,10 @@ describe('Traveler', () => {
     expect(traveler1.trips).to.deep.equal([]);
   })
 
+  it('should be able to return the traveler\'s first name only', () => {
+    expect(traveler3.returnFirstName()).to.equal('Sibby');
+  })
+
   it('should be able to find all trips belonging to this traveler', () => {
     expect(traveler2.trips).to.deep.equal([]);
 
