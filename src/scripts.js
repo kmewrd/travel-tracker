@@ -153,10 +153,11 @@ function getAnnualTravelExpenses() {
   const currentYear = (new Date()).getFullYear().toString();
   const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear));
   if (tripsThisYear.length) {
-    const totalCost = tripsThisYear.reduce((acc, trip) => {
+    const tripCost = tripsThisYear.reduce((acc, trip) => {
       acc += (trip.duration * trip.destination.estimatedLodgingCostPerDay) + (trip.travelers * trip.destination.estimatedFlightCostPerPerson);
       return acc;
     }, 0);
+    const totalCost = tripCost + (tripCost * .10);
     domUpdates.renderAnnualTravelExpenses(totalCost);
   }
 }
