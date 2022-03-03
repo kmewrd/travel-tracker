@@ -1,9 +1,8 @@
 import helperFunctions from './utils';
 
 const domUpdates = {
-  renderName(name) {
+  renderName(firstName) {
     const travelerName = document.getElementById('travelerName');
-    const firstName = name.split(" ")[0];
     travelerName.innerText = `${firstName}`;
   },
   renderUpcomingTrips(trips) {
