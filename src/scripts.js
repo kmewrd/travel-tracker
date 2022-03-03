@@ -31,7 +31,7 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
 }
 
 function updateDashboard() {
-  domUpdates.renderName(traveler.name);
+  domUpdates.renderName(traveler.returnFirstName());
   getUpcomingTrips();
   getPastTrips();
   getPendingTrips();
