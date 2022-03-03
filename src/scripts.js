@@ -39,6 +39,7 @@ function updateDashboard() {
 
 function getPastTrips() {
   const myTrips = sortByDate(traveler.trips);
+  console.log(myTrips);
   domUpdates.renderPastTrips(traveler.trips);
 }
 
@@ -46,23 +47,26 @@ function sortByDate(trips) {
   const datesSorted = trips.sort((a, b) => {
     let aa = a.date.split('/').reverse().join();
     let bb = b.date.split('/').reverse().join();
-    if (aa < bb) {
+    if (bb < aa) {
       return -1;
-    } else if (aa > bb) {
+    } else if (bb > aa) {
       return 1;
     } else {
       return 0;
     }
   });
-  console.log(datesSorted);
-  // const yearsSorted = datesSorted.sort((a, b) => {
-  //   let yearA = parseInt(a.date.split('/')[0]);
-  //   let yearB = parseInt(b.date.split('/')[0]);
-  //   return yearB - yearA;
-  // });
-  // console.log(yearsSorted);
-  // return yearsSorted;
-  // console.log(yearsSorted);
+  const yearsSorted = datesSorted.sort((a, b) => {
+    let yearA = a.date;
+    let yearB = b.date;
+    if (yearB < yearA) {
+      return -1;
+    } else if (yearB > yearA) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  return yearsSorted;
 }
 
 function getAnnualTravelExpenses() {
