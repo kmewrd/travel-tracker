@@ -92,6 +92,33 @@ function sortDateDescending(trips) {
   return yearsSorted;
 }
 
+function sortDateAscending(trips) {
+  checkDateFormat(trips);
+  const datesSorted = trips.sort((a, b) => {
+    let aa = a.date.split('/').reverse().join();
+    let bb = b.date.split('/').reverse().join();
+    if (bb > aa) {
+      return -1;
+    } else if (bb < aa) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  const yearsSorted = datesSorted.sort((a, b) => {
+    let yearA = a.date;
+    let yearB = b.date;
+    if (yearB > yearA) {
+      return -1;
+    } else if (yearB < yearA) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+  return yearsSorted;
+}
+
 function getAnnualTravelExpenses() {
   const currentYear = (new Date()).getFullYear().toString();
   const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear));
