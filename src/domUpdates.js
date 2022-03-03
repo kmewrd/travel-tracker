@@ -7,20 +7,22 @@ const domUpdates = {
     travelerName.innerText = `${firstName}`;
   },
   renderUpcomingTrips(trips) {
-    const upcomingTrips = document.querySelector('.js-upcoming-trips');
-    upcomingTrips.innerHTML = '';
-    trips.forEach(trip => {
-      if (trip.status === 'approved') {
-        upcomingTrips.innerHTML += `
-        <div>
+    if (trips.length) {
+      const upcomingTrips = document.querySelector('.js-upcoming-trips');
+      upcomingTrips.innerHTML = '';
+      trips.forEach(trip => {
+        if (trip.status === 'approved') {
+          upcomingTrips.innerHTML += `
+          <div>
           <p>Destination: ${trip.destination.location}</p>
           <p>Start date: ${trip.date}</p>
           <p>Duration of stay: ${trip.duration} days</p>
           <p>Number of guests: ${trip.travelers}</p>
-        </div>
-        `
-      }
-    })
+          </div>
+          `
+        }
+      })
+    }
   },
   renderPendingTrips(trips) {
     if (trips.length) {
