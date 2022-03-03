@@ -41,7 +41,7 @@ function getPastTrips() {
   // need to get today's date in order to evaluate if trip date has passed
   const today = helperFunctions.getTodayDate();
   // this function sorts all of a traveler's trips by date and year, descending
-  const myTrips = sortDateDescending(traveler.trips);
+  const myTrips = sortDateMostRecent(traveler.trips);
   // need some way to compare myTrips[0].date to today and see if it's less than today
   // if trip.date is less than today, then push trip into pastTrips
   // const pastTrips = myTrips.filter(trip => trip.date.includes());
@@ -65,7 +65,7 @@ function checkDateFormat(trips) {
   });
 }
 
-function sortDateDescending(trips) {
+function sortDateMostRecent(trips) {
   checkDateFormat(trips);
   const datesSorted = trips.sort((a, b) => {
     let aa = a.date.split('/').reverse().join();
@@ -92,7 +92,7 @@ function sortDateDescending(trips) {
   return yearsSorted;
 }
 
-function sortDateAscending(trips) {
+function sortDateLeastRecent(trips) {
   checkDateFormat(trips);
   const datesSorted = trips.sort((a, b) => {
     let aa = a.date.split('/').reverse().join();
