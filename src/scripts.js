@@ -49,7 +49,25 @@ function getPastTrips() {
   // domUpdates.renderPastTrips(pastTrips);
 }
 
+function checkDateFormat(trips) {
+  trips.map(trip => {
+    if (trip.date.length != 10) {
+      console.log('found an anomaly!');
+      let newDate = trip.date.split('/');
+      if (newDate[1].length != 2) {
+        console.log('the month is wrong');
+        newDate[1] = newDate[1].padStart(2, '0');
+      } else if (newDate[2].length != 2) {
+        console.log('the date is wrong');
+        newDate[2] = newDate[2].padStart(2, '0');
+      }
+      trip.date = newDate.join('/');
+    }
+  });
+}
+
 function sortByDate(trips) {
+  checkDateFormat(trips);
   const datesSorted = trips.sort((a, b) => {
     let aa = a.date.split('/').reverse().join();
     let bb = b.date.split('/').reverse().join();
