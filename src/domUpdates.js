@@ -11,16 +11,14 @@ const domUpdates = {
       const upcomingTrips = document.querySelector('.js-upcoming-trips');
       upcomingTrips.innerHTML = '';
       trips.forEach(trip => {
-        if (trip.status === 'approved') {
-          upcomingTrips.innerHTML += `
-          <div>
-          <p>Destination: ${trip.destination.location}</p>
-          <p>Start date: ${trip.date}</p>
-          <p>Duration of stay: ${trip.duration} days</p>
-          <p>Number of guests: ${trip.travelers}</p>
-          </div>
-          `
-        }
+        upcomingTrips.innerHTML += `
+        <div>
+        <p>Destination: ${trip.destination.location}</p>
+        <p>Start date: ${trip.date}</p>
+        <p>Duration of stay: ${trip.duration} days</p>
+        <p>Number of guests: ${trip.travelers}</p>
+        </div>
+        `
       })
     }
   },
@@ -45,16 +43,14 @@ const domUpdates = {
       const pastTrips = document.querySelector('.js-past-trips');
       pastTrips.innerHTML = '';
       trips.forEach(trip => {
-        if (trip.status === 'approved') {
-          pastTrips.innerHTML += `
-          <div>
-          <p>Destination: ${trip.destination.location}</p>
-          <p>Start date: ${trip.date}</p>
-          <p>Duration of stay: ${trip.duration} days</p>
-          <p>Number of guests: ${trip.travelers}</p>
-          </div>
-          `
-        }
+        pastTrips.innerHTML += `
+        <div>
+        <p>Destination: ${trip.destination.location}</p>
+        <p>Start date: ${trip.date}</p>
+        <p>Duration of stay: ${trip.duration} days</p>
+        <p>Number of guests: ${trip.travelers}</p>
+        </div>
+        `
       });
     }
   },
