@@ -13,7 +13,9 @@ class Traveler {
     });
   }
   findMyDestinations(destinations) {
-    this.trips.map(trip => trip.destination = destinations.find(destination => destination.id === trip.destinationID));
+    if (this.trips.length) {
+      this.trips.map(trip => trip.destination = destinations.find(destination => destination.id === trip.destinationID));
+    }
   }
 }
 
