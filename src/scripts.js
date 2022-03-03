@@ -149,10 +149,6 @@ function sortDateLeastRecent(trips) {
   return yearsSorted;
 }
 
-function compareTwoDates(dates) {
-
-}
-
 function getAnnualTravelExpenses() {
   const currentYear = (new Date()).getFullYear().toString();
   const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear));
