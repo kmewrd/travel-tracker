@@ -43,7 +43,12 @@ function getPastTrips() {
 }
 
 function sortByDate(trips) {
-
+  const yearsSorted = trips.sort((a, b) => {
+    let yearA = parseInt(a.date.split('/')[0]);
+    let yearB = parseInt(b.date.split('/')[0]);
+    return yearB - yearA;
+  });
+  console.log(yearsSorted);
 }
 
 function getAnnualTravelExpenses() {
