@@ -16,7 +16,7 @@ let destinations;
 function fetchAllData() {
   Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
   .then(data => {
-    initializeData(2, data[0], data[1], data[2]);
+    initializeData(18, data[0], data[1], data[2]);
     updateDashboard();
   })
 }
@@ -33,8 +33,27 @@ function initializeData(travelerID, travelerData, tripsData, destinationsData) {
 function updateDashboard() {
   domUpdates.renderName(traveler.name);
   domUpdates.renderPendingTrips(traveler.trips);
+  getUpcomingTrips();
   getPastTrips();
   getAnnualTravelExpenses();
+}
+
+function getUpcomingTrips() {
+  const today = {date: helperFunctions.getTodayDate()};
+  const myTrips = [...traveler.trips];
+  let upcomingTrips = [];
+  myTrips.push(today);
+  console.log(myTrips);
+  sortDateLeastRecent(myTrips);
+  if (myTrips[myTrips.length - 1] === today) {
+    console.log('There are no upcoming trips.')
+    myTrips.pop();
+    // domUpdates.renderPastTrips(pastTrips);
+  } else {
+    const todayIndex = myTrips.indexOf(today);
+    upcomingTrips = myTrips.slice(todayIndex);
+    domUpdates.renderUpcomingTrips(upcomingTrips);
+  }
 }
 
 function getPastTrips() {
@@ -51,7 +70,9 @@ function getPastTrips() {
     domUpdates.renderPastTrips(pastTrips);
   } else {
     const todayIndex = myTrips.indexOf(today);
-    pastTrips = myTrips.slice(0, todayIndex);
+    console.log(todayIndex);
+    pastTrips = myTrips.slice(todayIndex);
+    console.log(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
   }
 }
