@@ -38,9 +38,15 @@ function updateDashboard() {
 }
 
 function getPastTrips() {
+  // need to get today's date in order to evaluate if trip date has passed
+  const today = helperFunctions.getTodayDate();
+  // this function sorts all of a traveler's trips by date and year, descending
   const myTrips = sortByDate(traveler.trips);
   console.log(myTrips);
-  domUpdates.renderPastTrips(traveler.trips);
+  // need some way to compare myTrips[0].date to today and see if it's less than today
+  // if trip.date is less than today, then push trip into pastTrips
+  const pastTrips = myTrips.filter(trip => trip.date.includes());
+  domUpdates.renderPastTrips(pastTrips);
 }
 
 function sortByDate(trips) {
