@@ -39,20 +39,22 @@ const domUpdates = {
     })
   },
   renderPastTrips(trips) {
-    const pastTrips = document.querySelector('.js-past-trips');
-    pastTrips.innerHTML = '';
-    trips.forEach(trip => {
-      if (trip.status === 'approved') {
-        pastTrips.innerHTML += `
-        <div>
+    if (trips.length) {
+      const pastTrips = document.querySelector('.js-past-trips');
+      pastTrips.innerHTML = '';
+      trips.forEach(trip => {
+        if (trip.status === 'approved') {
+          pastTrips.innerHTML += `
+          <div>
           <p>Destination: ${trip.destination.location}</p>
           <p>Start date: ${trip.date}</p>
           <p>Duration of stay: ${trip.duration} days</p>
           <p>Number of guests: ${trip.travelers}</p>
-        </div>
-        `
-      }
-    })
+          </div>
+          `
+        }
+      });
+    }
   },
   renderAnnualTravelExpenses(cost) {
     const travelExpenses = document.querySelector('.js-travel-expenses');
