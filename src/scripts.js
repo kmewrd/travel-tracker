@@ -16,7 +16,7 @@ let destinations;
 function fetchAllData() {
   Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
   .then(data => {
-    initializeData(18, data[0], data[1], data[2]);
+    initializeData(33, data[0], data[1], data[2]);
     updateDashboard();
   })
 }
@@ -48,7 +48,7 @@ function getUpcomingTrips() {
     console.log('There are no upcoming trips.')
   } else {
     const todayIndex = myTrips.indexOf(today);
-    upcomingTrips = myTrips.slice(todayIndex);
+    upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
     domUpdates.renderUpcomingTrips(upcomingTrips);
   }
 }
@@ -66,7 +66,7 @@ function getPastTrips() {
     domUpdates.renderPastTrips(pastTrips);
   } else {
     const todayIndex = myTrips.indexOf(today);
-    pastTrips = myTrips.slice(todayIndex);
+    pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
     console.log(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
   }
