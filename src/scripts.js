@@ -67,7 +67,6 @@ function getPastTrips() {
   } else {
     const todayIndex = myTrips.indexOf(today);
     pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
-    console.log(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
   }
 }
@@ -151,7 +150,7 @@ function sortDateLeastRecent(trips) {
 
 function getAnnualTravelExpenses() {
   const currentYear = (new Date()).getFullYear().toString();
-  const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear));
+  const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear)).filter(trip => trip.status === 'approved');
   if (tripsThisYear.length) {
     const tripCost = tripsThisYear.reduce((acc, trip) => {
       acc += (trip.duration * trip.destination.estimatedLodgingCostPerDay) + (trip.travelers * trip.destination.estimatedFlightCostPerPerson);
