@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <title>Travel Tracker</title>
 </head>
 <body>
   <header>
-    <h1>Travel Tracker</h1>
-    <h2>Welcome, traveler!</h2>
+    <h1>Travel <span class="text-blue">Tracker</span></h1>
+    <h2>Welcome, <span id="travelerName">traveler</span>!</h2>
   </header>
   <main>
     <form>
@@ -32,31 +35,37 @@
     </form>
     <section class="traveler-details">
       <div class="upcoming-and-pending">
-        <div class="upcoming-trips-column">
+        <div class="upcoming-trips-column column-left">
           <h2>Upcoming trips</h2>
           <div class="js-upcoming-trips">
             <p>No trips to display.</p>
           </div>
         </div>
-        <div class="pending-trips-column">
+        <div class="pending-trips-column column-right">
           <h2>Pending trips</h2>
+          <article class="article-test">
+            <div class="dark-filter"></div>
+            <div class="trip-details">
+              <p class="location-name">Brussels, Belgium</p>
+              <p>Departure: 2022/10/17</p>
+              <p>6 days | 6 guests</p>
+            </div>
+          </article>
           <div class="js-pending-trips">
             <p>No trips to display.</p>
           </div>
         </div>
       </div>
       <div class="past-and-expenses">
-        <div class="past-trips-column">
+        <div class="past-trips-column column-left">
           <h2>Where you've been</h2>
           <div class="js-past-trips">
             <p>No trips to display.</p>
           </div>
         </div>
-        <div class="expenses-column">
+        <div class="expenses-column column-right">
           <h2>Annual travel expenses</h2>
-          <div class="js-travel-expenses">
-            <p>$0.00</p>
-          </div>
+          <p><span class="js-travel-expenses">$0.00</span> spent to date</p>
         </div>
       </div>
     </section>
