@@ -180,7 +180,7 @@ function makeTripObject() {
     userID: traveler.id,
     destinationID: parseInt(tripDestination.value),
     travelers: parseInt(numOfGuests.value),
-    date: startDate.value,
+    date: startDate.value.split('-').join('/'),
     duration: parseInt(tripDuration.value),
     status: 'pending',
     suggestedActivities: []
@@ -201,11 +201,12 @@ function submitBookingRequest() {
   if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
     const newTrip = makeTripObject();
     console.log(newTrip);
+    postData('trips', newTrip);
     hide([estimatedTripCost]);
     clearBookingForm();
   }
 }
-// note: "please complete all required fields" does not disappear after you go back and complete fields
+
 function show(elements) {
   return elements.forEach(element => element.classList.remove('hidden'));
 }
