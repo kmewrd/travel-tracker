@@ -151,3 +151,11 @@ button {
   font-weight: 600;
   font-size: 24px;
 }
+
+.empty-fields-error-message {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
