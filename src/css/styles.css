@@ -96,6 +96,7 @@ button {
   height: 200px;
   color: #fff;
   font-weight: 600;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -121,4 +122,8 @@ button {
 
 .trip-details > p {
   margin: 5px 10px;
+}
+
+.location-name {
+  text-transform: uppercase;
 }
