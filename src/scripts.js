@@ -109,10 +109,25 @@ function estimateTripCost() {
 }
 
 function validateBookingForm() {
-  if (!startDate.value || !tripDuration.value || !numOfGuests.value || !trip.destination.value) {
+  if (!startDate.value || !tripDuration.value || !numOfGuests.value || !tripDestination.value) {
     showErrorMessage();
   } else {
     console.log('No errors here!');
+    const newTrip = makeTripObject();
+    console.log(newTrip);
+  }
+}
+
+function makeTripObject() {
+  return {
+    id: trips.length + 1,
+    userID: traveler.id,
+    destinationID: parseInt(tripDestination.value),
+    travelers: parseInt(numOfGuests.value),
+    date: startDate.value,
+    duration: parseInt(tripDuration.value),
+    status: 'pending',
+    suggestedActivities: []
   }
 }
 
