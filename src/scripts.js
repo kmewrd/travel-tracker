@@ -14,6 +14,8 @@ const numOfGuests = document.getElementById('num-guests');
 const tripDestination = document.getElementById('trip-destination');
 const submitBookingButton = document.querySelector('.js-submit-booking-button');
 const invalidDateErrorMessage = document.querySelector('.invalid-date-msg');
+const invalidTripDurationMessage = document.querySelector('.invalid-duration-msg');
+const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
 
@@ -138,6 +140,12 @@ function validateTripDate(e) {
   } else {
     hide([invalidDateErrorMessage]);
     return true;
+  }
+}
+
+function validateTripDuration() {
+  if (tripDuration.value === 0) {
+    show([])
   }
 }
 
