@@ -66,6 +66,10 @@ const domUpdates = {
   renderAnnualTravelExpenses(cost) {
     const travelExpenses = document.querySelector('.js-travel-expenses');
     travelExpenses.innerText = `$${cost}.00`;
+  },
+  renderEstimatedTripCost(cost) {
+    const estimatedCost = document.querySelector('.trip-estimated-cost');
+    estimatedCost.innerText = `Estimated cost: ${cost}`;
   }
 };
 
