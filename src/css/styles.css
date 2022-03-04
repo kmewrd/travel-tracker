@@ -79,14 +79,12 @@ button {
 .upcoming-and-pending,
 .past-and-expenses {
   display: flex;
+  max-height: 1000px;
   justify-content: space-evenly;
-  width: 800px;
 }
 
-.upcoming-and-pending {
-  max-height: 1000px;
-}
-
-.past-and-expenses {
-  max-height: 1000px;
+.column-left,
+.column-right {
+  width: 400px;
+  /* border: 1px solid yellow; */
 }
