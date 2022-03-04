@@ -12,6 +12,7 @@ const tripDuration = document.getElementById('trip-duration');
 const numOfGuests = document.getElementById('num-guests');
 const tripDestination = document.getElementById('trip-destination');
 const submitBookingButton = document.querySelector('.js-submit-trip-request-button');
+const emptyFieldsErrorMessage = document.querySelector('.empty-fields-error-message');
 
 // global variables
 let traveler;
@@ -104,6 +105,26 @@ function estimateTripCost() {
   const costBeforeAgencyFee = (tripDuration.value * destination.estimatedLodgingCostPerDay) + (numOfGuests.value * destination.estimatedFlightCostPerPerson);
   const estimatedTotal = constBeforeAgencyFee + (constBeforeAgencyFee * .10);
   return estimatedTotal;
+}
+
+function validateBookingForm() {
+  if (!startDate.value || !tripDuration.value || !numOfGuests.value || !trip.destination.value) {
+    showErrorMessage();
+  } else {
+    console.log('No errors here!');
+  }
+}
+
+function showErrorMessage() {
+  show([emptyFieldsErrorMessage]);
+}
+
+function show(elements) {
+  elements.forEach(element => element.classList.add('hidden'));
+}
+
+function hide(elements) {
+  elements.forEach(element => element.classList.remove('hidden'));
 }
 
 // event listeners
