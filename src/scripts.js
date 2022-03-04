@@ -120,8 +120,7 @@ function validateBookingForm() {
     return false;
   } else if (!dateIsCorrect) {
     show([invalidDateErrorMessage]);
-    hide([estimatedTripCost]);
-    hide([emptyFieldsErrorMessage])
+    hide([estimatedTripCost, emptyFieldsErrorMessage]);
   } else {
     console.log('No errors here!');
     hide([emptyFieldsErrorMessage]);
@@ -144,8 +143,12 @@ function validateTripDate(e) {
 }
 
 function validateTripDuration() {
-  if (tripDuration.value === 0) {
-    show([])
+  if (tripDuration.value === '0') {
+    show([invalidTripDurationMessage]);
+    hide([invalidDateErrorMessage, invalidNumGuestsMessage]);
+  } else {
+    console.log('all good')
+    hide([invalidTripDurationMessage]);
   }
 }
 
@@ -202,6 +205,7 @@ function hide(elements) {
 window.addEventListener('load', fetchAllData);
 bookingForm.addEventListener('input', function() {
   validateTripDate();
+  validateTripDuration();
   checkFieldsToShowTripCost();
 });
 submitBookingButton.addEventListener('click', function(e) {
