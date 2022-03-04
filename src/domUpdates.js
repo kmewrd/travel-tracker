@@ -11,12 +11,14 @@ const domUpdates = {
       upcomingTrips.innerHTML = '';
       trips.forEach(trip => {
         upcomingTrips.innerHTML += `
-        <div>
-        <p>Destination: ${trip.destination.location}</p>
-        <p>Start date: ${trip.date}</p>
-        <p>Duration of stay: ${trip.duration} days</p>
-        <p>Number of guests: ${trip.travelers}</p>
-        </div>
+        <article class="trip-card">
+          <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
+          <div class="trip-details">
+            <p class="location-name">${trip.destination.location}</p>
+            <p>Departure: ${trip.date}</p>
+            <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
+          </div>
+        </article>
         `
       })
     }
@@ -27,12 +29,14 @@ const domUpdates = {
       pendingTrips.innerHTML = '';
       trips.forEach(trip => {
         pendingTrips.innerHTML += `
-        <div>
-        <p>Destination: ${trip.destination.location}</p>
-        <p>Start date: ${trip.date}</p>
-        <p>Duration of stay: ${trip.duration} days</p>
-        <p>Number of guests: ${trip.travelers}</p>
-        </div>
+        <article class="trip-card">
+          <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
+          <div class="trip-details">
+            <p class="location-name">${trip.destination.location}</p>
+            <p>Departure: ${trip.date}</p>
+            <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
+          </div>
+        </article>
         `
       })
     }
