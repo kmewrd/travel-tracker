@@ -109,12 +109,13 @@ function estimateTripCost() {
 }
 
 function validateBookingForm() {
-  if (!startDate.value || !tripDuration.value || !numOfGuests.value || !tripDestination.value) {
-    showErrorMessage();
+  if (!startDate.value || !tripDuration.value || !numOfGuests.value || tripDestination.value === '0') {
+    show([emptyFieldsErrorMessage]);
   } else {
     console.log('No errors here!');
     const newTrip = makeTripObject();
     console.log(newTrip);
+    hide([emptyFieldsErrorMessage]);
     clearBookingForm();
   }
 }
@@ -137,10 +138,6 @@ function clearBookingForm() {
   tripDuration.value = '';
   numOfGuests.value = '';
   tripDestination.value = '0';
-}
-
-function showErrorMessage() {
-  show([emptyFieldsErrorMessage]);
 }
 
 function show(elements) {
