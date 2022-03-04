@@ -115,6 +115,7 @@ function validateBookingForm() {
     console.log('No errors here!');
     const newTrip = makeTripObject();
     console.log(newTrip);
+    clearBookingForm();
   }
 }
 
@@ -129,6 +130,13 @@ function makeTripObject() {
     status: 'pending',
     suggestedActivities: []
   }
+}
+
+function clearBookingForm() {
+  startDate.value = '';
+  tripDuration.value = '';
+  numOfGuests.value = '';
+  tripDestination.value = '0';
 }
 
 function showErrorMessage() {
