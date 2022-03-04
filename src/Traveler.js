@@ -21,6 +21,20 @@ class Traveler {
       this.trips.map(trip => trip.destination = destinations.find(destination => destination.id === trip.destinationID));
     }
   }
+  calculateAnnualExpenses() {
+    const currentYear = (new Date()).getFullYear().toString();
+    const tripsThisYear = this.trips.filter(trip => trip.date.includes(currentYear)).filter(trip => trip.status === 'approved');
+    if (tripsThisYear.length) {
+      const tripsCost = tripsThisYear.reduce((acc, trip) => {
+        acc += (trip.duration * trip.destination.estimatedLodgingCostPerDay) + (trip.travelers * trip.destination.estimatedFlightCostPerPerson);
+        return acc;
+      }, 0);
+      const totalCost = tripsCost + (tripsCost * .10);
+      return totalCost;
+    } else {
+      return 0;
+    }
+  }
 }
 
 export default Traveler;
