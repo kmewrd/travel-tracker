@@ -145,7 +145,6 @@ function validateTripDate(e) {
 function validateTripDuration() {
   if (tripDuration.value === '0') {
     show([invalidTripDurationMessage]);
-    hide([invalidDateErrorMessage, invalidNumGuestsMessage]);
     return false;
   } else {
     hide([invalidTripDurationMessage]);
@@ -153,9 +152,20 @@ function validateTripDuration() {
   }
 }
 
+function validateTripGuests() {
+  if (numOfGuests.value === '0') {
+    show([invalidNumGuestsMessage]);
+    return false;
+  } else {
+    hide([invalidNumGuestsMessage]);
+    return true;
+  }
+}
+
 function checkFieldsToShowTripCost() {
   const dateIsCorrect = validateTripDate();
   if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect) {
+    hide([emptyFieldsErrorMessage]);
     show([estimatedTripCost]);
     const newTripCost = estimateTripCost();
     domUpdates.renderEstimatedTripCost(newTripCost.toFixed(2));
@@ -187,14 +197,15 @@ function clearBookingForm() {
 function submitBookingRequest() {
   const dateIsCorrect = validateTripDate();
   const durationIsValid = validateTripDuration();
-  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid) {
+  const numGuestsIsValid = validateTripGuests();
+  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
     const newTrip = makeTripObject();
     console.log(newTrip);
     hide([estimatedTripCost]);
     clearBookingForm();
   }
 }
-
+// note: "please complete all required fields" does not disappear after you go back and complete fields
 function show(elements) {
   return elements.forEach(element => element.classList.remove('hidden'));
 }
@@ -208,6 +219,7 @@ window.addEventListener('load', fetchAllData);
 bookingForm.addEventListener('input', function() {
   validateTripDate();
   validateTripDuration();
+  validateTripGuests();
   checkFieldsToShowTripCost();
 });
 submitBookingButton.addEventListener('click', function(e) {
