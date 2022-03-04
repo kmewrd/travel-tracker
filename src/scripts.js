@@ -7,11 +7,12 @@ import Destination from './Destination';
 import Trip from './Trip';
 
 // query selectors
+const bookingForm = document.querySelector('booking-form');
 const startDate = document.getElementById('start-date');
 const tripDuration = document.getElementById('trip-duration');
 const numOfGuests = document.getElementById('num-guests');
 const tripDestination = document.getElementById('trip-destination');
-const submitBookingButton = document.querySelector('.js-submit-trip-request-button');
+const submitBookingButton = document.querySelector('.js-submit-booking-button');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-error-message');
 
 // global variables
@@ -120,12 +121,16 @@ function showErrorMessage() {
 }
 
 function show(elements) {
-  elements.forEach(element => element.classList.add('hidden'));
+  return elements.forEach(element => element.classList.remove('hidden'));
 }
 
 function hide(elements) {
-  elements.forEach(element => element.classList.remove('hidden'));
+  elements.forEach(element => element.classList.add('hidden'));
 }
 
 // event listeners
 window.addEventListener('load', fetchAllData);
+submitBookingButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  validateBookingForm();
+})
