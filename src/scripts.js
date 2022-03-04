@@ -99,5 +99,12 @@ function getAnnualTravelExpenses() {
   domUpdates.renderAnnualTravelExpenses(totalCost);
 }
 
+function estimateTripCost() {
+  const destination = destinations.find(destination => destination.id === tripDestination.value);
+  const costBeforeAgencyFee = (tripDuration.value * destination.estimatedLodgingCostPerDay) + (numOfGuests.value * destination.estimatedFlightCostPerPerson);
+  const estimatedTotal = constBeforeAgencyFee + (constBeforeAgencyFee * .10);
+  return estimatedTotal;
+}
+
 // event listeners
 window.addEventListener('load', fetchAllData);
