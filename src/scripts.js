@@ -77,75 +77,15 @@ function getPendingTrips() {
   domUpdates.renderPendingTrips(pendingTrips);
 }
 
-function checkDateFormat(trips) {
-  trips.map(trip => {
-    if (trip.date.length != 10) {
-      console.log('found an anomaly!');
-      let newDate = trip.date.split('/');
-      if (newDate[1].length != 2) {
-        console.log('the month is wrong');
-        newDate[1] = newDate[1].padStart(2, '0');
-      } else if (newDate[2].length != 2) {
-        console.log('the date is wrong');
-        newDate[2] = newDate[2].padStart(2, '0');
-      }
-      trip.date = newDate.join('/');
-    }
-  });
-}
-
 function sortDateMostRecent(trips) {
-  checkDateFormat(trips);
-  const datesSorted = trips.sort((a, b) => {
-    let aa = a.date.split('/').reverse().join();
-    let bb = b.date.split('/').reverse().join();
-    if (bb < aa) {
-      return -1;
-    } else if (bb > aa) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
-  const yearsSorted = datesSorted.sort((a, b) => {
-    let yearA = a.date;
-    let yearB = b.date;
-    if (yearB < yearA) {
-      return -1;
-    } else if (yearB > yearA) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
-  return yearsSorted;
+  const tripsSorted = trips.sort((a, b) => new Date(b.date) - new Date(a.date));
+  console.log(tripsSorted);
+  return tripsSorted;
 }
 
 function sortDateLeastRecent(trips) {
-  checkDateFormat(trips);
-  const datesSorted = trips.sort((a, b) => {
-    let aa = a.date.split('/').reverse().join();
-    let bb = b.date.split('/').reverse().join();
-    if (bb > aa) {
-      return -1;
-    } else if (bb < aa) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
-  const yearsSorted = datesSorted.sort((a, b) => {
-    let yearA = a.date;
-    let yearB = b.date;
-    if (yearB > yearA) {
-      return -1;
-    } else if (yearB < yearA) {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
-  return yearsSorted;
+  const tripsSorted = trips.sort((a, b) => new Date(a.date) - new Date(b.date));
+  return tripsSorted;
 }
 
 function getAnnualTravelExpenses() {
