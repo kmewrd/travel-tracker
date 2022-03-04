@@ -13,7 +13,8 @@ const tripDuration = document.getElementById('trip-duration');
 const numOfGuests = document.getElementById('num-guests');
 const tripDestination = document.getElementById('trip-destination');
 const submitBookingButton = document.querySelector('.js-submit-booking-button');
-const emptyFieldsErrorMessage = document.querySelector('.empty-fields-error-message');
+const invalidDateErrorMessage = document.querySelector('.invalid-date-msg');
+const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
 
 // global variables
@@ -124,6 +125,18 @@ function validateBookingForm(e) {
   }
 }
 
+function validateTripDate(e) {
+  const today = helperFunctions.getTodayDate();
+  const tripStartDate = startDate.value;
+  let dateCompare = [today, tripStartDate];
+  dateCompare = dateCompare.sort((a, b) => new Date(a) - new Date(b));
+  if (dateCompare[0] != today) {
+    show([invalidDateErrorMessage]);
+  } else {
+    hide([invalidDateErrorMessage])
+  }
+}
+
 function makeTripObject() {
   return {
     id: trips.length + 1,
@@ -155,7 +168,8 @@ function hide(elements) {
 // event listeners
 window.addEventListener('load', fetchAllData);
 bookingForm.addEventListener('input', function(e) {
-  validateBookingForm(e);
+  validateTripDate(e);
+  // validateBookingForm(e);
 });
 submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();

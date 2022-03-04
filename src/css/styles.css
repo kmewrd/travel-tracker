@@ -154,7 +154,7 @@ button {
   margin-bottom: 20px;
 }
 
-.empty-fields-error-message {
+.error-message {
   color: red;
 }
 
