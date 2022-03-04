@@ -112,11 +112,18 @@ function estimateTripCost() {
 }
 
 function validateBookingForm() {
+  const dateIsCorrect = validateTripDate();
   if (!startDate.value || !tripDuration.value || !numOfGuests.value || tripDestination.value === '0') {
     show([emptyFieldsErrorMessage]);
+    return false;
+  } else if (!dateIsCorrect) {
+    show([invalidDateErrorMessage]);
+    hide([estimatedTripCost]);
+    hide([emptyFieldsErrorMessage])
   } else {
     console.log('No errors here!');
     hide([emptyFieldsErrorMessage]);
+    return true;
   }
 }
 
@@ -127,18 +134,19 @@ function validateTripDate(e) {
   dateCompare = dateCompare.sort((a, b) => new Date(a) - new Date(b));
   if (dateCompare[0] != today) {
     show([invalidDateErrorMessage]);
+    return false;
   } else {
-    hide([invalidDateErrorMessage])
+    hide([invalidDateErrorMessage]);
+    return true;
   }
 }
 
 function checkFieldsToShowTripCost() {
-  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0') {
+  const dateIsCorrect = validateTripDate();
+  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect) {
     show([estimatedTripCost]);
     const newTripCost = estimateTripCost();
     domUpdates.renderEstimatedTripCost(newTripCost.toFixed(2));
-    const newTrip = makeTripObject();
-    console.log(newTrip);
   } else {
     hide([estimatedTripCost]);
   }
@@ -164,6 +172,16 @@ function clearBookingForm() {
   tripDestination.value = '0';
 }
 
+function submitBookingRequest() {
+  const dateIsCorrect = validateTripDate();
+  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect) {
+    const newTrip = makeTripObject();
+    console.log(newTrip);
+    hide([estimatedTripCost]);
+    clearBookingForm();
+  }
+}
+
 function show(elements) {
   return elements.forEach(element => element.classList.remove('hidden'));
 }
@@ -181,5 +199,5 @@ bookingForm.addEventListener('input', function() {
 submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
   validateBookingForm();
-  clearBookingForm();
+  submitBookingRequest();
 });
