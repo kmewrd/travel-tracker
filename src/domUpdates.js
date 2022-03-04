@@ -43,12 +43,18 @@ const domUpdates = {
       pastTrips.innerHTML = '';
       trips.forEach(trip => {
         pastTrips.innerHTML += `
-        <div>
-        <p>Destination: ${trip.destination.location}</p>
-        <p>Start date: ${trip.date}</p>
-        <p>Duration of stay: ${trip.duration} days</p>
-        <p>Number of guests: ${trip.travelers}</p>
-        </div>
+        <article class="trip-card">
+          <img class="destination-image" src="${trip.destination.image} alt="${trip.destination.alt}"">
+          <div class="trip-details">
+            <div class="past-trip-line-1">
+              <p class="location-name">${trip.destination.location}</p>
+              <p>${trip.date}</p>
+            </div>
+            <div class="past-trip-line-2">
+              <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
+            </div>
+          </div>
+        </article>
         `
       });
     }
