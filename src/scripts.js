@@ -7,13 +7,14 @@ import Destination from './Destination';
 import Trip from './Trip';
 
 // query selectors
-const bookingForm = document.querySelector('booking-form');
+const bookingForm = document.querySelector('.booking-form');
 const startDate = document.getElementById('start-date');
 const tripDuration = document.getElementById('trip-duration');
 const numOfGuests = document.getElementById('num-guests');
 const tripDestination = document.getElementById('trip-destination');
 const submitBookingButton = document.querySelector('.js-submit-booking-button');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-error-message');
+const estimatedTripCost = document.querySelector('.trip-estimated-cost');
 
 // global variables
 let traveler;
@@ -108,7 +109,7 @@ function estimateTripCost() {
   return estimatedTotal;
 }
 
-function validateBookingForm() {
+function validateBookingForm(e) {
   if (!startDate.value || !tripDuration.value || !numOfGuests.value || tripDestination.value === '0') {
     show([emptyFieldsErrorMessage]);
   } else {
@@ -116,7 +117,7 @@ function validateBookingForm() {
     const newTrip = makeTripObject();
     console.log(newTrip);
     hide([emptyFieldsErrorMessage]);
-    clearBookingForm();
+    show([estimatedTripCost]);
   }
 }
 
@@ -150,7 +151,11 @@ function hide(elements) {
 
 // event listeners
 window.addEventListener('load', fetchAllData);
+bookingForm.addEventListener('input', function(e) {
+  validateBookingForm(e);
+});
 submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
-  validateBookingForm();
-})
+  // validateBookingForm();
+  clearBookingForm();
+});
