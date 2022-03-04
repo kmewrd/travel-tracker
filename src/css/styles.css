@@ -155,6 +155,10 @@ button {
   margin-bottom: 20px;
 }
 
+.error-msg-or-estimated-cost > p {
+  margin: 0px;
+}
+
 .error-message {
   color: red;
 }

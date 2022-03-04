@@ -146,9 +146,10 @@ function validateTripDuration() {
   if (tripDuration.value === '0') {
     show([invalidTripDurationMessage]);
     hide([invalidDateErrorMessage, invalidNumGuestsMessage]);
+    return false;
   } else {
-    console.log('all good')
     hide([invalidTripDurationMessage]);
+    return true;
   }
 }
 
@@ -185,7 +186,8 @@ function clearBookingForm() {
 
 function submitBookingRequest() {
   const dateIsCorrect = validateTripDate();
-  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect) {
+  const durationIsValid = validateTripDuration();
+  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid) {
     const newTrip = makeTripObject();
     console.log(newTrip);
     hide([estimatedTripCost]);
