@@ -16,7 +16,7 @@ let destinations;
 function fetchAllData() {
   Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
   .then(data => {
-    initializeData(1, data[0], data[1], data[2]);
+    initializeData(33, data[0], data[1], data[2]);
     updateDashboard();
   })
 }
