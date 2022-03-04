@@ -106,7 +106,7 @@ function getAnnualTravelExpenses() {
 function estimateTripCost() {
   const destinationID = parseInt(tripDestination.value);
   const myDestination = destinations.find(destination => destination.id === destinationID);
-  const costBeforeAgencyFee = (tripDuration.value * myDestination.estimatedLodgingCostPerDay) + (numOfGuests.value * myDestination.estimatedFlightCostPerPerson);
+  const costBeforeAgencyFee = (tripDuration.value * myDestination.estimatedLodgingCostPerDay) + (numOfGuests.value * myDestination.estimatedFlightCostPerPerson * 2);
   const estimatedTotal = costBeforeAgencyFee + (costBeforeAgencyFee * .10);
   return estimatedTotal;
 }
@@ -180,6 +180,6 @@ bookingForm.addEventListener('input', function() {
 });
 submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
-  validateBookingForm(e);
+  validateBookingForm();
   clearBookingForm();
 });
