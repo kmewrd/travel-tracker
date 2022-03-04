@@ -56,6 +56,7 @@ button {
   flex-direction: column;
   margin-top: 30px;
   width: 300px;
+  /* border: 1px dashed blue; */
 }
 
 .inputs-container {
@@ -64,6 +65,7 @@ button {
   justify-content: space-around;
   height: 400px;
   margin-bottom: 20px;
+  /* border: 1px solid pink; */
 }
 
 .submit-button {
@@ -105,14 +107,6 @@ button {
   /* border-radius: 15px; */
 }
 
-.brussels {
-  content: url(https://images.unsplash.com/photo-1559113202-c916b8e44373?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-}
-
-.quito {
-  content: url(https://images.unsplash.com/photo-1501684691657-cf3012635478?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80);
-}
-
 .trip-details {
   display: flex;
   flex-direction: column;
@@ -152,8 +146,21 @@ button {
   font-size: 24px;
 }
 
+.error-msg-or-estimated-cost {
+  height: 40px;
+  /* border: 1px solid yellow; */
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .empty-fields-error-message {
   color: red;
+}
+
+.trip-estimated-cost {
+  color: #8e94a3;
+  font-style: italic;
 }
 
 .hidden {
