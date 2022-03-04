@@ -111,17 +111,12 @@ function estimateTripCost() {
   return estimatedTotal;
 }
 
-function validateBookingForm(e) {
+function validateBookingForm() {
   if (!startDate.value || !tripDuration.value || !numOfGuests.value || tripDestination.value === '0') {
     show([emptyFieldsErrorMessage]);
   } else {
     console.log('No errors here!');
-    const newTrip = makeTripObject();
-    console.log(newTrip);
     hide([emptyFieldsErrorMessage]);
-    show([estimatedTripCost]);
-    const newTripCost = estimateTripCost();
-    domUpdates.renderEstimatedTripCost(newTripCost);
   }
 }
 
@@ -134,6 +129,18 @@ function validateTripDate(e) {
     show([invalidDateErrorMessage]);
   } else {
     hide([invalidDateErrorMessage])
+  }
+}
+
+function checkFieldsToShowTripCost() {
+  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0') {
+    show([estimatedTripCost]);
+    const newTripCost = estimateTripCost();
+    domUpdates.renderEstimatedTripCost(newTripCost.toFixed(2));
+    const newTrip = makeTripObject();
+    console.log(newTrip);
+  } else {
+    hide([estimatedTripCost]);
   }
 }
 
@@ -167,11 +174,12 @@ function hide(elements) {
 
 // event listeners
 window.addEventListener('load', fetchAllData);
-bookingForm.addEventListener('input', function(e) {
-  validateTripDate(e);
-  // validateBookingForm(e);
+bookingForm.addEventListener('input', function() {
+  validateTripDate();
+  checkFieldsToShowTripCost();
 });
 submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
+  validateBookingForm(e);
   clearBookingForm();
 });

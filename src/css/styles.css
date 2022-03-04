@@ -150,7 +150,8 @@ button {
   height: 40px;
   /* border: 1px solid yellow; */
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   margin-bottom: 20px;
 }
 
