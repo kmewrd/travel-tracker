@@ -69,7 +69,7 @@ const domUpdates = {
   },
   renderEstimatedTripCost(cost) {
     const estimatedCost = document.querySelector('.trip-estimated-cost');
-    estimatedCost.innerText = `Estimated cost: ${cost}`;
+    estimatedCost.innerText = `Estimated cost: $${cost}`;
   }
 };
 

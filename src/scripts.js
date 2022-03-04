@@ -103,9 +103,10 @@ function getAnnualTravelExpenses() {
 }
 
 function estimateTripCost() {
-  const destination = destinations.find(destination => destination.id === tripDestination.value);
-  const costBeforeAgencyFee = (tripDuration.value * destination.estimatedLodgingCostPerDay) + (numOfGuests.value * destination.estimatedFlightCostPerPerson);
-  const estimatedTotal = constBeforeAgencyFee + (constBeforeAgencyFee * .10);
+  const destinationID = parseInt(tripDestination.value);
+  const myDestination = destinations.find(destination => destination.id === destinationID);
+  const costBeforeAgencyFee = (tripDuration.value * myDestination.estimatedLodgingCostPerDay) + (numOfGuests.value * myDestination.estimatedFlightCostPerPerson);
+  const estimatedTotal = costBeforeAgencyFee + (costBeforeAgencyFee * .10);
   return estimatedTotal;
 }
 
@@ -118,6 +119,8 @@ function validateBookingForm(e) {
     console.log(newTrip);
     hide([emptyFieldsErrorMessage]);
     show([estimatedTripCost]);
+    const newTripCost = estimateTripCost();
+    domUpdates.renderEstimatedTripCost(newTripCost);
   }
 }
 
@@ -156,6 +159,5 @@ bookingForm.addEventListener('input', function(e) {
 });
 submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
-  // validateBookingForm();
   clearBookingForm();
 });
