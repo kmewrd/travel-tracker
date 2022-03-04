@@ -89,16 +89,19 @@ button {
   /* border: 1px solid yellow; */
 }
 
-.article-test {
+.trip-card {
   font-weight: 600;
   font-size: 18px;
   display: flex;
   flex-direction: column;
+  /* border-radius: 20px;
+  padding: 5px; */
 }
 
 .destination-image {
   max-height: 400px;
   margin: 10px;
+  /* border-radius: 15px; */
 }
 
 .brussels {
@@ -115,7 +118,7 @@ button {
   justify-content: flex-end;
 }
 
-.trip-details > p {
+.trip-details > * {
   margin: 5px 10px;
 }
 
@@ -134,7 +137,8 @@ button {
   margin: 0px 10px;
 }
 
-.past-trip-line-1 > * {
+.past-trip-line-1 > *,
+.past-trip-line-2 > * {
   margin: 5px 0px;
 }
 
