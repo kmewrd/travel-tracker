@@ -16,7 +16,7 @@ let destinations;
 function fetchAllData() {
   Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
   .then(data => {
-    initializeData(33, data[0], data[1], data[2]);
+    initializeData(1, data[0], data[1], data[2]);
     updateDashboard();
   })
 }
@@ -47,6 +47,7 @@ function getUpcomingTrips() {
   if (myTrips[myTrips.length - 1] === today) {
     console.log('There are no upcoming trips.')
   } else {
+    console.log('You have trips coming up!')
     const todayIndex = myTrips.indexOf(today);
     upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
     domUpdates.renderUpcomingTrips(upcomingTrips);
@@ -60,7 +61,6 @@ function getPastTrips() {
   myTrips.push(today);
   sortDateMostRecent(myTrips);
   if (myTrips[0] === today) {
-    console.log('All trips are past.')
     myTrips.shift();
     pastTrips = [...myTrips];
     domUpdates.renderPastTrips(pastTrips);
@@ -79,7 +79,6 @@ function getPendingTrips() {
 
 function sortDateMostRecent(trips) {
   const tripsSorted = trips.sort((a, b) => new Date(b.date) - new Date(a.date));
-  console.log(tripsSorted);
   return tripsSorted;
 }
 
@@ -89,16 +88,8 @@ function sortDateLeastRecent(trips) {
 }
 
 function getAnnualTravelExpenses() {
-  const currentYear = (new Date()).getFullYear().toString();
-  const tripsThisYear = traveler.trips.filter(trip => trip.date.includes(currentYear)).filter(trip => trip.status === 'approved');
-  if (tripsThisYear.length) {
-    const tripCost = tripsThisYear.reduce((acc, trip) => {
-      acc += (trip.duration * trip.destination.estimatedLodgingCostPerDay) + (trip.travelers * trip.destination.estimatedFlightCostPerPerson);
-      return acc;
-    }, 0);
-    const totalCost = tripCost + (tripCost * .10);
-    domUpdates.renderAnnualTravelExpenses(totalCost);
-  }
+  const totalCost = traveler.calculateAnnualExpenses();
+  domUpdates.renderAnnualTravelExpenses(totalCost);
 }
 
 // event listeners

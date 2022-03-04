@@ -70,5 +70,13 @@ describe('Traveler', () => {
 
     expect(traveler2.trips[0].destination).to.be.an.instanceof(Destination);
     expect(traveler2.trips[0].destination.id).to.equal(43);
-  });
+  })
+
+  it('should be able to calculate the total cost of trips this year, plus the 10% agency fee', () => {
+    traveler3.findMyTrips(allTrips);
+    traveler3.findMyDestinations(allDestinations);
+    const annualExpenses = traveler3.calculateAnnualExpenses();
+
+    expect(annualExpenses).to.equal(4543);
+  })
 });
