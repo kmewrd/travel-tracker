@@ -7,7 +7,7 @@ import Destination from './Destination';
 import Trip from './Trip';
 
 // query selectors
-const bookingForm = document.querySelector('.booking-form');
+const bookingForm = document.querySelector('.js-booking-form');
 const startDate = document.getElementById('start-date');
 const tripDuration = document.getElementById('trip-duration');
 const numOfGuests = document.getElementById('num-guests');

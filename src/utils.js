@@ -6,6 +6,11 @@ const helperFunctions = {
     const yyyy = today.getFullYear().toString();
     return `${yyyy}/${mm}/${dd}`;
   }
+  formatDateWithDay(trips) {
+    const options = {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'};
+    const formattedTrips = trips.map(trip => trip.date.getLocaleString('en-US', options));
+    return formattedTrips;
+  }
 };
 
 export default helperFunctions;
