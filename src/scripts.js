@@ -81,6 +81,8 @@ function getPastTrips() {
   } else {
     const todayIndex = myTrips.indexOf(today);
     pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+    pastTrips = helperFunctions.formatMonthYear(pastTrips);
+    console.log(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
   }
 }
