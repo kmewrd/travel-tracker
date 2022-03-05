@@ -20,6 +20,7 @@ const helperFunctions = {
       trip.date = new Date(trip.date).toLocaleString('en-US', options);
       return trip;
     });
+    console.log(formattedTrips)
     return formattedTrips;
   }
 };
