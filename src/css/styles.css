@@ -4,16 +4,20 @@ body, html {
   margin: 0;
 }
 
+/* lightest almost white #fafbff
+lightest blue-gray #eeeff3
+next lightest blue-gray #e8e8ed */
+
 header {
-  background-color: #eeeff3;
+  background-color: #fafbff;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 1px solid #8e94a3;
   padding: 0px 2%;
   width: 96%;
   height: 86px;
   position: fixed;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 main {
