@@ -239,4 +239,5 @@ submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
   validateBookingForm();
   submitBookingRequest();
+  fetchAllData();
 });
