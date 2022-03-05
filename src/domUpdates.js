@@ -16,6 +16,7 @@ const domUpdates = {
           <div class="trip-details">
             <h3 class="location-name">${trip.destination.location}</h3>
             <p>Departure: ${trip.date}</p>
+            <p>Status: <span class="status-approved">${trip.status}</span></p>
             <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
           </div>
         </article>
@@ -34,6 +35,7 @@ const domUpdates = {
           <div class="trip-details">
             <h3 class="location-name">${trip.destination.location}</h3>
             <p>Departure: ${trip.date}</p>
+            <p>Status: <span class="status-pending">${trip.status}</span></p>
             <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
           </div>
         </article>
