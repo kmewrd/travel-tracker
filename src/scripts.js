@@ -18,6 +18,7 @@ const invalidTripDurationMessage = document.querySelector('.invalid-duration-msg
 const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
+const successMessage = document.querySelector('.success-message');
 
 // global variables
 let traveler;
@@ -206,11 +207,16 @@ function submitBookingRequest() {
   const numGuestsIsValid = validateTripGuests();
   if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
     const newTrip = makeTripObject();
-    console.log(newTrip);
     postData('trips', newTrip);
     hide([estimatedTripCost]);
+    showSuccessMessage();
     clearBookingForm();
   }
+}
+
+function showSuccessMessage() {
+  show([successMessage]);
+  setTimeout(() => hide([successMessage]), 2000);
 }
 
 function show(elements) {
