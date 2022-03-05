@@ -58,6 +58,7 @@ button {
   width: 140px;
   height: 36px;
   font-size: 18px;
+  border-radius: 20px;
 }
 
 .text-blue {
