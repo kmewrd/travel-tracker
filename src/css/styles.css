@@ -40,8 +40,13 @@ label {
 input,
 select {
   height: 36px;
-  width: 100%;
+  width: 300px;
   font-family: 'Nunito Sans', sans-serif;
+  padding: 0;
+}
+
+select {
+  width: 304px;
 }
 
 article {
