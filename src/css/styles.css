@@ -232,8 +232,19 @@ button {
 
 .success-message {
   font-style: italic;
+  animation: 1.2s ease fade;
+  animation-delay: 1.0s;
 }
 
 .hidden {
   display: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
