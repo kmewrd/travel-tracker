@@ -48,7 +48,7 @@ const domUpdates = {
       trips.forEach(trip => {
         pastTrips.innerHTML += `
         <article class="past-trip-card">
-          <img class="past-destination-image" src="${trip.destination.image} alt="${trip.destination.alt}"">
+          <img class="past-destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
           <div class="past-trip-details">
               <p class="past-location-name">${trip.destination.location}</p>
               <p>${trip.date}</p>
