@@ -63,6 +63,7 @@ function getUpcomingTrips() {
     console.log('You have trips coming up!')
     const todayIndex = myTrips.indexOf(today);
     upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+    upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
     domUpdates.renderUpcomingTrips(upcomingTrips);
   }
 }
