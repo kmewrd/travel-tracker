@@ -6,6 +6,19 @@ import Traveler from './Traveler';
 import Destination from './Destination';
 import Trip from './Trip';
 
+// query selectors
+const bookingForm = document.querySelector('.booking-form');
+const startDate = document.getElementById('start-date');
+const tripDuration = document.getElementById('trip-duration');
+const numOfGuests = document.getElementById('num-guests');
+const tripDestination = document.getElementById('trip-destination');
+const submitBookingButton = document.querySelector('.js-submit-booking-button');
+const invalidDateErrorMessage = document.querySelector('.invalid-date-msg');
+const invalidTripDurationMessage = document.querySelector('.invalid-duration-msg');
+const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
+const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
+const estimatedTripCost = document.querySelector('.trip-estimated-cost');
+
 // global variables
 let traveler;
 let travelers;
@@ -92,5 +105,126 @@ function getAnnualTravelExpenses() {
   domUpdates.renderAnnualTravelExpenses(totalCost);
 }
 
+function estimateTripCost() {
+  const destinationID = parseInt(tripDestination.value);
+  const myDestination = destinations.find(destination => destination.id === destinationID);
+  const costBeforeAgencyFee = (tripDuration.value * myDestination.estimatedLodgingCostPerDay) + (numOfGuests.value * myDestination.estimatedFlightCostPerPerson * 2);
+  const estimatedTotal = costBeforeAgencyFee + (costBeforeAgencyFee * .10);
+  return estimatedTotal;
+}
+
+function validateBookingForm() {
+  const dateIsCorrect = validateTripDate();
+  if (!startDate.value || !tripDuration.value || !numOfGuests.value || tripDestination.value === '0') {
+    show([emptyFieldsErrorMessage]);
+    return false;
+  } else if (!dateIsCorrect) {
+    show([invalidDateErrorMessage]);
+    hide([estimatedTripCost, emptyFieldsErrorMessage]);
+  } else {
+    console.log('No errors here!');
+    hide([emptyFieldsErrorMessage]);
+    return true;
+  }
+}
+
+function validateTripDate(e) {
+  const today = helperFunctions.getTodayDate();
+  const tripStartDate = startDate.value;
+  let dateCompare = [today, tripStartDate];
+  dateCompare = dateCompare.sort((a, b) => new Date(a) - new Date(b));
+  if (dateCompare[0] != today) {
+    show([invalidDateErrorMessage]);
+    return false;
+  } else {
+    hide([invalidDateErrorMessage]);
+    return true;
+  }
+}
+
+function validateTripDuration() {
+  if (tripDuration.value === '0') {
+    show([invalidTripDurationMessage]);
+    return false;
+  } else {
+    hide([invalidTripDurationMessage]);
+    return true;
+  }
+}
+
+function validateTripGuests() {
+  if (numOfGuests.value === '0') {
+    show([invalidNumGuestsMessage]);
+    return false;
+  } else {
+    hide([invalidNumGuestsMessage]);
+    return true;
+  }
+}
+
+function checkFieldsToShowTripCost() {
+  const dateIsCorrect = validateTripDate();
+  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect) {
+    hide([emptyFieldsErrorMessage]);
+    show([estimatedTripCost]);
+    const newTripCost = estimateTripCost();
+    domUpdates.renderEstimatedTripCost(newTripCost.toFixed(2));
+  } else {
+    hide([estimatedTripCost]);
+  }
+}
+
+function makeTripObject() {
+  return {
+    id: trips.length + 1,
+    userID: traveler.id,
+    destinationID: parseInt(tripDestination.value),
+    travelers: parseInt(numOfGuests.value),
+    date: startDate.value.split('-').join('/'),
+    duration: parseInt(tripDuration.value),
+    status: 'pending',
+    suggestedActivities: []
+  }
+}
+
+function clearBookingForm() {
+  startDate.value = '';
+  tripDuration.value = '';
+  numOfGuests.value = '';
+  tripDestination.value = '0';
+}
+
+function submitBookingRequest() {
+  const dateIsCorrect = validateTripDate();
+  const durationIsValid = validateTripDuration();
+  const numGuestsIsValid = validateTripGuests();
+  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
+    const newTrip = makeTripObject();
+    console.log(newTrip);
+    postData('trips', newTrip);
+    hide([estimatedTripCost]);
+    clearBookingForm();
+  }
+}
+
+function show(elements) {
+  return elements.forEach(element => element.classList.remove('hidden'));
+}
+
+function hide(elements) {
+  elements.forEach(element => element.classList.add('hidden'));
+}
+
 // event listeners
 window.addEventListener('load', fetchAllData);
+bookingForm.addEventListener('input', function() {
+  validateTripDate();
+  validateTripDuration();
+  validateTripGuests();
+  checkFieldsToShowTripCost();
+});
+submitBookingButton.addEventListener('click', function(e) {
+  e.preventDefault();
+  validateBookingForm();
+  submitBookingRequest();
+});
