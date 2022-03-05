@@ -14,7 +14,7 @@ const domUpdates = {
         <article class="trip-card">
           <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
           <div class="trip-details">
-            <p class="location-name">${trip.destination.location}</p>
+            <h3 class="location-name">${trip.destination.location}</h3>
             <p>Departure: ${trip.date}</p>
             <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
           </div>
@@ -32,7 +32,7 @@ const domUpdates = {
         <article class="trip-card">
           <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
           <div class="trip-details">
-            <p class="location-name">${trip.destination.location}</p>
+            <h3 class="location-name">${trip.destination.location}</h3>
             <p>Departure: ${trip.date}</p>
             <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
           </div>
@@ -50,7 +50,7 @@ const domUpdates = {
         <article class="past-trip-card">
           <img class="past-destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
           <div class="past-trip-details">
-              <p class="past-location-name">${trip.destination.location}</p>
+              <h3 class="past-location-name">${trip.destination.location}</h3>
               <p>${trip.date}</p>
               <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
           </div>

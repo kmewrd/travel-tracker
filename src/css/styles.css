@@ -211,7 +211,7 @@ button {
   margin: 5px 10px;
 }
 
-.past-trip-details > p {
+.past-trip-details > * {
   margin: 5px 0px;
 }
 
