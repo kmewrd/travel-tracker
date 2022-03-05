@@ -30,7 +30,6 @@ form {
   align-items: center;
   overflow: hidden;
   margin-top: 86px;
-  /* position: fixed; */
 }
 
 label {
@@ -255,5 +254,31 @@ button {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1313px) {
+  .upcoming-and-pending {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 861px) {
+  main {
+    flex-direction: column;
+  }
+  form {
+    width: 100%;
+    height: 680px;
+  }
+  .traveler-details {
+    width: 100%;
+  }
+  .travel-expenses {
+    display: none;
+  }
+  .upcoming-trips-column {
+    margin-top: 0px;
   }
 }
