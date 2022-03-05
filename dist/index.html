@@ -21,13 +21,13 @@
         <h2>Book your next trip</h2>
         <div class="inputs-container">
           <label for="start-date">Start date</label>
-          <input id="start-date" name="start-date" type="date">
+          <input id="start-date" name="start-date" type="date" required>
           <label for="trip-duration">Duration of stay</label>
-          <input id="trip-duration" type="number" min="1" name="trip-duration" type="text">
+          <input id="trip-duration" type="number" min="1" name="trip-duration" type="text" required>
           <label for="num-guests">Number of guests</label>
-          <input id="num-guests" type="number" min="1" name="num-guests" type="text">
+          <input id="num-guests" type="number" min="1" name="num-guests" type="text" required>
           <label for="trip-destination">Destination</label>
-          <select id="trip-destination" name="trip-destination">
+          <select id="trip-destination" name="trip-destination" required>
             <option value="0" selected disabled>Where are you going?</option>
             <option value="1">Lima, Peru</option>
             <option value="2">Stockholm, Sweden</option>
