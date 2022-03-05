@@ -257,14 +257,37 @@ button {
   }
 }
 
-@media screen and (max-width: 1313px) {
+@media screen and (max-width: 1312px) {
   .upcoming-and-pending {
     flex-direction: column;
     align-items: center;
   }
+  article {
+    width: 600px;
+  }
+  .trip-column {
+    width: 600px;
+  }
+  .destination-image {
+    width: 580px;
+    height: 360px;
+  }
 }
 
-@media screen and (max-width: 861px) {
+@media screen and (max-width: 1024px) {
+  article {
+    width: 400px;
+  }
+  .trip-column {
+    width: 400px;
+  }
+  .destination-image {
+    width: 380px;
+    height: 252px;
+  }
+}
+
+@media screen and (max-width: 860px) {
   main {
     flex-direction: column;
   }
@@ -280,5 +303,28 @@ button {
   }
   .upcoming-trips-column {
     margin-top: 0px;
+  }
+  article {
+    width: 600px;
+  }
+  .trip-column {
+    width: 600px;
+  }
+  .destination-image {
+    width: 580px;
+    height: 360px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  article {
+    width: 400px;
+  }
+  .trip-column {
+    width: 400px;
+  }
+  .destination-image {
+    width: 380px;
+    height: 252px;
   }
 }
