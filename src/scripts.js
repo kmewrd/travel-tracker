@@ -87,7 +87,8 @@ function getPastTrips() {
 
 function getPendingTrips() {
   const myTrips = [...traveler.trips];
-  const pendingTrips = myTrips.filter(trip => trip.status === 'pending');
+  let pendingTrips = myTrips.filter(trip => trip.status === 'pending');
+  pendingTrips = helperFunctions.formatDateWithDay(pendingTrips);
   domUpdates.renderPendingTrips(pendingTrips);
 }
 
