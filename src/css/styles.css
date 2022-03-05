@@ -26,6 +26,10 @@ form {
   overflow: hidden;
 }
 
+label {
+  font-weight: 600;
+}
+
 input,
 select {
   height: 36px;
