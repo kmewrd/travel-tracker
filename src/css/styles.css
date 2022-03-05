@@ -1,15 +1,20 @@
-body {
+body, html {
   background-color: #eeeff3;
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
 }
 
 header {
+  background-color: #fafbff;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  border-bottom: 1px solid #8e94a3;
-  padding: 0px 20px;
+  padding: 0px 2%;
+  width: 96%;
+  height: 86px;
+  position: fixed;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  /* border-radius: 0px 0px 20px 20px; */
 }
 
 main {
@@ -19,21 +24,34 @@ main {
 form {
   background-color: #fafbff;
   width: 25%;
-  height: 100vh;
+  min-width: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
+  margin-top: 86px;
+}
+
+label {
+  font-weight: 600;
 }
 
 input,
 select {
   height: 36px;
-  width: 100%;
+  width: 300px;
   font-family: 'Nunito Sans', sans-serif;
+  padding: 0;
+}
+
+select {
+  height: 40px;
+  width: 304px;
 }
 
 article {
   background-color: #fff;
+  width: 400px;
 }
 
 button {
@@ -45,13 +63,14 @@ button {
   width: 140px;
   height: 36px;
   font-size: 18px;
+  border-radius: 20px;
 }
 
 .text-blue {
   color: #326BFF;
 }
 
-.form-container {
+.form-content-container {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
@@ -76,18 +95,31 @@ button {
   display: flex;
   flex-direction: column;
   width: 75%;
+  overflow: scroll;
+  margin-top: 86px;
 }
 
-.upcoming-and-pending,
-.past-and-expenses {
+.upcoming-and-pending {
   display: flex;
-  max-height: 1000px;
   justify-content: space-evenly;
+  /* border: 1px solid yellow; */
 }
 
-.column-left,
-.column-right {
+.past-trips-container {
+  /* border: 1px dashed black; */
+  width: 100%;
+}
+
+.past-trips {
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.trip-column {
   width: 400px;
+  margin-top: 30px;
   /* border: 1px solid yellow; */
 }
 
@@ -97,14 +129,16 @@ button {
   display: flex;
   flex-direction: column;
   margin-bottom: 25px;
-  /* border-radius: 20px;
-  padding: 5px; */
+  border-radius: 15px;
+  padding: 5px;
 }
 
 .destination-image {
-  max-height: 400px;
+  width: 380px;
+  height: 252px;
+  object-fit: cover;
   margin: 10px;
-  /* border-radius: 15px; */
+  border-radius: 10px;
 }
 
 .trip-details {
@@ -122,7 +156,7 @@ button {
 }
 
 .card-text-secondary {
-  color: #8e94a3;
+  color: #717682;
 }
 
 .past-trip-line-1 {
@@ -146,7 +180,7 @@ button {
   font-size: 24px;
 }
 
-.error-msg-or-estimated-cost {
+.hidden-message-container {
   height: 40px;
   /* border: 1px solid yellow; */
   display: flex;
@@ -155,7 +189,7 @@ button {
   margin-bottom: 20px;
 }
 
-.error-msg-or-estimated-cost > p {
+.hidden-message-container > p {
   margin: 0px;
 }
 
@@ -164,10 +198,133 @@ button {
 }
 
 .trip-estimated-cost {
-  color: #8e94a3;
+  color: #717682;
   font-style: italic;
+}
+
+.past-trips-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.past-trip-card {
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  margin: 15px;
+  /* border: 1px solid pink; */
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.past-destination-image {
+  height: 125px;
+  width: 150px;
+  object-fit: cover;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.past-trip-details {
+  margin: 5px 10px;
+}
+
+.past-trip-details > * {
+  margin: 5px 0px;
+}
+
+.past-location-name {
+  font-size: 20px;
+}
+
+.success-message {
+  font-style: italic;
+  animation: 1.2s ease fade;
+  animation-delay: 1.0s;
 }
 
 .hidden {
   display: none;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1312px) {
+  .upcoming-and-pending {
+    flex-direction: column;
+    align-items: center;
+  }
+  article {
+    width: 600px;
+  }
+  .trip-column {
+    width: 600px;
+  }
+  .destination-image {
+    width: 580px;
+    height: 360px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  article {
+    width: 400px;
+  }
+  .trip-column {
+    width: 400px;
+  }
+  .destination-image {
+    width: 380px;
+    height: 252px;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  main {
+    flex-direction: column;
+  }
+  form {
+    width: 100%;
+    height: 680px;
+  }
+  .traveler-details {
+    width: 100%;
+  }
+  .travel-expenses {
+    display: none;
+  }
+  .upcoming-trips-column {
+    margin-top: 0px;
+  }
+  article {
+    width: 600px;
+  }
+  .trip-column {
+    width: 600px;
+  }
+  .destination-image {
+    width: 580px;
+    height: 360px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  article {
+    width: 400px;
+  }
+  .trip-column {
+    width: 400px;
+  }
+  .destination-image {
+    width: 380px;
+    height: 252px;
+  }
 }

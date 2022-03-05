@@ -14,8 +14,9 @@ const domUpdates = {
         <article class="trip-card">
           <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
           <div class="trip-details">
-            <p class="location-name">${trip.destination.location}</p>
+            <h3 class="location-name">${trip.destination.location}</h3>
             <p>Departure: ${trip.date}</p>
+            <p>Status: <span class="status-approved">${trip.status}</span></p>
             <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
           </div>
         </article>
@@ -32,8 +33,9 @@ const domUpdates = {
         <article class="trip-card">
           <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
           <div class="trip-details">
-            <p class="location-name">${trip.destination.location}</p>
+            <h3 class="location-name">${trip.destination.location}</h3>
             <p>Departure: ${trip.date}</p>
+            <p>Status: <span class="status-pending">${trip.status}</span></p>
             <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
           </div>
         </article>
@@ -47,16 +49,12 @@ const domUpdates = {
       pastTrips.innerHTML = '';
       trips.forEach(trip => {
         pastTrips.innerHTML += `
-        <article class="trip-card">
-          <img class="destination-image" src="${trip.destination.image} alt="${trip.destination.alt}"">
-          <div class="trip-details">
-            <div class="past-trip-line-1">
-              <p class="location-name">${trip.destination.location}</p>
+        <article class="past-trip-card">
+          <img class="past-destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
+          <div class="past-trip-details">
+              <h3 class="past-location-name">${trip.destination.location}</h3>
               <p>${trip.date}</p>
-            </div>
-            <div class="past-trip-line-2">
               <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
-            </div>
           </div>
         </article>
         `

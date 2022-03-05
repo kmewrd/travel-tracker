@@ -7,7 +7,7 @@ import Destination from './Destination';
 import Trip from './Trip';
 
 // query selectors
-const bookingForm = document.querySelector('.booking-form');
+const bookingForm = document.querySelector('.js-booking-form');
 const startDate = document.getElementById('start-date');
 const tripDuration = document.getElementById('trip-duration');
 const numOfGuests = document.getElementById('num-guests');
@@ -18,6 +18,7 @@ const invalidTripDurationMessage = document.querySelector('.invalid-duration-msg
 const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
+const successMessage = document.querySelector('.success-message');
 
 // global variables
 let traveler;
@@ -58,11 +59,12 @@ function getUpcomingTrips() {
   myTrips.push(today);
   sortDateLeastRecent(myTrips);
   if (myTrips[myTrips.length - 1] === today) {
-    console.log('There are no upcoming trips.')
+    // console.log('There are no upcoming trips.')
   } else {
-    console.log('You have trips coming up!')
+    // console.log('You have trips coming up!')
     const todayIndex = myTrips.indexOf(today);
     upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+    upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
     domUpdates.renderUpcomingTrips(upcomingTrips);
   }
 }
@@ -76,17 +78,22 @@ function getPastTrips() {
   if (myTrips[0] === today) {
     myTrips.shift();
     pastTrips = [...myTrips];
+    pastTrips = helperFunctions.formatMonthYear(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
-  } else {
+  } else if (myTrips[myTrips.length - 1] != today) {
     const todayIndex = myTrips.indexOf(today);
     pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+    pastTrips = helperFunctions.formatMonthYear(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
+  } else {
+    console.log('There are no past trips.')
   }
 }
 
 function getPendingTrips() {
   const myTrips = [...traveler.trips];
-  const pendingTrips = myTrips.filter(trip => trip.status === 'pending');
+  let pendingTrips = myTrips.filter(trip => trip.status === 'pending');
+  pendingTrips = helperFunctions.formatDateWithDay(pendingTrips);
   domUpdates.renderPendingTrips(pendingTrips);
 }
 
@@ -200,11 +207,16 @@ function submitBookingRequest() {
   const numGuestsIsValid = validateTripGuests();
   if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
     const newTrip = makeTripObject();
-    console.log(newTrip);
     postData('trips', newTrip);
     hide([estimatedTripCost]);
+    showSuccessMessage();
     clearBookingForm();
   }
+}
+
+function showSuccessMessage() {
+  show([successMessage]);
+  setTimeout(() => hide([successMessage]), 2000);
 }
 
 function show(elements) {
@@ -227,4 +239,5 @@ submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
   validateBookingForm();
   submitBookingRequest();
+  fetchAllData();
 });

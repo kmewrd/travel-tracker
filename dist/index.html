@@ -13,20 +13,21 @@
   <header>
     <h1>Travel <span class="text-blue">Tracker</span></h1>
     <h2>Welcome, <span id="travelerName">traveler</span>!</h2>
+    <p class="travel-expenses"><span class="js-travel-expenses text-blue expenses">$0.00</span> spent to date</p>
   </header>
   <main>
-    <form class="booking-form">
-      <div class="form-container">
+    <form class="js-booking-form booking-form">
+      <div class="form-content-container">
         <h2>Book your next trip</h2>
         <div class="inputs-container">
           <label for="start-date">Start date</label>
-          <input id="start-date" name="start-date" type="date">
+          <input id="start-date" name="start-date" type="date" required>
           <label for="trip-duration">Duration of stay</label>
-          <input id="trip-duration" type="number" min="1" name="trip-duration" type="text">
+          <input id="trip-duration" type="number" min="1" name="trip-duration" type="text" required>
           <label for="num-guests">Number of guests</label>
-          <input id="num-guests" type="number" min="1" name="num-guests" type="text">
+          <input id="num-guests" type="number" min="1" name="num-guests" type="text" required>
           <label for="trip-destination">Destination</label>
-          <select id="trip-destination" name="trip-destination">
+          <select id="trip-destination" name="trip-destination" required>
             <option value="0" selected disabled>Where are you going?</option>
             <option value="1">Lima, Peru</option>
             <option value="2">Stockholm, Sweden</option>
@@ -80,41 +81,38 @@
             <option value="50">Hobart, Tasmania</option>
           </select>
         </div>
-        <div class="error-msg-or-estimated-cost">
+        <div class="hidden-message-container">
           <p class="invalid-date-msg error-message hidden">Please select a valid date.</p>
           <p class="invalid-duration-msg error-message hidden">Please enter a valid trip duration.</p>
           <p class="invalid-guests-msg error-message hidden">Please enter a valid number of guests.</p>
           <p class="empty-fields-msg error-message hidden">Please complete all required fields.</p>
           <p class="trip-estimated-cost hidden">Estimated cost:</p>
+          <p class="success-message hidden">Thank you! Your booking request has been sent.</p>
         </div>
         <button class="submit-button js-submit-booking-button">Submit</button>
       </div>
     </form>
     <section class="traveler-details">
       <div class="upcoming-and-pending">
-        <div class="upcoming-trips-column column-left">
+        <div class="upcoming-trips-column trip-column">
           <h2>Upcoming trips</h2>
           <div class="js-upcoming-trips">
             <p>No trips to display.</p>
           </div>
         </div>
-        <div class="pending-trips-column column-right">
+        <div class="pending-trips-column trip-column">
           <h2>Pending trips</h2>
           <div class="js-pending-trips">
             <p>No trips to display.</p>
           </div>
         </div>
       </div>
-      <div class="past-and-expenses">
-        <div class="past-trips-column column-left">
+      <div class="upcoming-and-pending">
+        <div class="past-trips-container">
           <h2>Where you've been</h2>
-          <div class="js-past-trips">
+          <div class="js-past-trips past-trips">
             <p>No trips to display.</p>
           </div>
-        </div>
-        <div class="expenses-column column-right">
-          <h2>Annual travel expenses</h2>
-          <p><span class="js-travel-expenses text-blue expenses">$0.00</span> spent to date</p>
         </div>
       </div>
     </section>
