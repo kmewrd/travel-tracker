@@ -15,8 +15,15 @@
     <h2>Welcome, <span id="travelerName">traveler</span>!</h2>
     <h3 class="travel-expenses"><span class="js-travel-expenses text-blue expenses">$0.00</span> spent to date</h3>
   </header>
-  <main>
-    <form class="js-booking-form booking-form">
+  <main class="background-image-large">
+    <form class="js-login-form login-form">
+      <label for="username">Username</label>
+      <input id="username" type="text" required>
+      <label for="password">Password</label>
+      <input id="password" type="text" required>
+      <button class="js-login-button">Login</button>
+    </form>
+    <form class="js-booking-form booking-form hidden">
       <div class="form-content-container">
         <h2>Book your next trip</h2>
         <div class="inputs-container">
@@ -92,7 +99,7 @@
         <button class="submit-button js-submit-booking-button">Submit</button>
       </div>
     </form>
-    <section class="all-trips-section">
+    <section class="all-trips-section hidden">
       <div class="trips-container">
         <div class="upcoming-trips-column trip-column">
           <h2>Upcoming trips</h2>
