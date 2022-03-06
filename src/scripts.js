@@ -8,6 +8,7 @@ import Trip from './Trip';
 
 // query selectors
 const bookingForm = document.querySelector('.js-booking-form');
+const dashboard = document.querySelector('.js-trips-dashboard');
 const startDate = document.getElementById('start-date');
 const tripDuration = document.getElementById('trip-duration');
 const numOfGuests = document.getElementById('num-guests');
@@ -19,6 +20,7 @@ const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
 const successMessage = document.querySelector('.success-message');
+const loginView = document.querySelector('.js-login-view');
 const userLogin = document.getElementById('username');
 const userPassword = document.getElementById('password');
 const invalidLoginErrorMessage = document.querySelector('.invalid-username-password-message');
@@ -246,9 +248,18 @@ function getRandomDestinationID(destinations) {
   return destinationID;
 }
 
-// function authenticateUser() {
-//
-// }
+function authenticateUser() {
+  const usernameIsValid = validateUsername();
+  const passwordIsValid = validatePassword();
+  if (usernameIsValid && passwordIsValid) {
+    showDashboard();
+  }
+}
+
+function showDashboard() {
+  hide([loginView]);
+  show([bookingForm, dashboard]);
+}
 
 function validateUsername() {
   let username = userLogin.value;
@@ -275,8 +286,8 @@ function validatePassword() {
 // event listeners
 window.addEventListener('load', fetchAllData);
 loginButton.addEventListener('click', function(e) {
-  validateUsername();
-  // authenticateUser();
+  e.preventDefault();
+  authenticateUser();
 });
 
 bookingForm.addEventListener('input', function() {
