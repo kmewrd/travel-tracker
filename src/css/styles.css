@@ -74,6 +74,8 @@ button:hover {
   background-color: #1549cf;
 }
 
+/* Form Styles */
+
 .text-blue {
   color: #316bff;
 }
@@ -157,6 +159,10 @@ button:hover {
 
 .trip-details > * {
   margin: 5px 10px;
+}
+
+.trip-details > p {
+  font-size: 20px;
 }
 
 .location-name {
