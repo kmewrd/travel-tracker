@@ -252,13 +252,13 @@ function getRandomDestinationID(destinations) {
 
 function validateUsername() {
   let username = userLogin.value;
-  if (username.length < 9) {
+  const letters = username.split('').slice(0, 8).join('');
+  const number = parseInt(username.split('').slice(8).join(''));
+  if (username.length < 9 || number <= 0 || number > 50) {
     show([invalidLoginErrorMessage]);
+    return false;
   } else {
-    const letters = username.split('').slice(0, 8).join('');
-    const number = parseInt(username.split('').slice(8).join(''));
-    username = [letters, number];
-    return username;
+    return number;
   }
 }
 
