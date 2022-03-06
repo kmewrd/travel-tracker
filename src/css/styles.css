@@ -279,6 +279,10 @@ button:hover {
     width: 580px;
     height: 360px;
   }
+  .past-destination-image {
+    /* height: 125px; */
+    width: 200px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
