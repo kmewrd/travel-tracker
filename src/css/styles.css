@@ -48,6 +48,7 @@ select {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   padding: 0;
+  padding-left: 5px;
 }
 
 select {
