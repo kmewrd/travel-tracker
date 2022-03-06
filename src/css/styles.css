@@ -2,6 +2,9 @@ body, html {
   background-color: #eeeff3;
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 header {
@@ -14,11 +17,11 @@ header {
   height: 86px;
   position: fixed;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
-  /* border-radius: 0px 0px 20px 20px; */
 }
 
 main {
   display: flex;
+  width: 100%;
 }
 
 form {
@@ -28,11 +31,11 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
   margin-top: 86px;
 }
 
 label {
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -41,6 +44,7 @@ select {
   height: 36px;
   width: 300px;
   font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
   padding: 0;
 }
 
@@ -60,22 +64,25 @@ button {
   background-color: #316bff;
   color: #fff;
   border: 0;
-  width: 140px;
+  width: 300px;
   height: 36px;
   font-size: 18px;
   border-radius: 20px;
+  transition: 0.2s;
 }
 
-.text-blue {
-  color: #316bff;
+button:hover {
+  cursor: pointer;
+  background-color: #1549cf;
 }
+
+/* Form Styles */
 
 .form-content-container {
   display: flex;
   flex-direction: column;
   margin-top: 30px;
   width: 300px;
-  /* border: 1px dashed blue; */
 }
 
 .inputs-container {
@@ -84,43 +91,48 @@ button {
   justify-content: space-around;
   height: 400px;
   margin-bottom: 20px;
-  /* border: 1px solid pink; */
 }
 
-.submit-button {
-  width: 300px;
+.hidden-message-container {
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
 }
 
-.traveler-details {
+.hidden-message-container > p {
+  margin: 0px;
+}
+
+.trip-estimated-cost {
+  color: #717682;
+  font-style: italic;
+}
+
+.success-message {
+  font-style: italic;
+  animation: 1.2s ease fade;
+  animation-delay: 1.0s;
+}
+
+/* Trips Container & Card Styles */
+
+.all-trips-section {
   display: flex;
   flex-direction: column;
   width: 75%;
-  overflow: scroll;
   margin-top: 86px;
 }
 
-.upcoming-and-pending {
+.trips-container {
   display: flex;
   justify-content: space-evenly;
-  /* border: 1px solid yellow; */
-}
-
-.past-trips-container {
-  /* border: 1px dashed black; */
-  width: 100%;
-}
-
-.past-trips {
-  /* border: 1px solid blue; */
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
 }
 
 .trip-column {
   width: 400px;
   margin-top: 30px;
-  /* border: 1px solid yellow; */
 }
 
 .trip-card {
@@ -151,6 +163,10 @@ button {
   margin: 5px 10px;
 }
 
+.trip-details > p {
+  font-size: 20px;
+}
+
 .location-name {
   font-size: 24px;
 }
@@ -159,53 +175,17 @@ button {
   color: #717682;
 }
 
-.past-trip-line-1 {
+.past-trips {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin: 0px 10px;
-}
-
-.past-trip-line-1 > *,
-.past-trip-line-2 > * {
-  margin: 5px 0px;
-}
-
-.dot-divider {
-  margin: 0px 5px;
-}
-
-.expenses {
-  font-weight: 600;
-  font-size: 24px;
-}
-
-.hidden-message-container {
-  height: 40px;
-  /* border: 1px solid yellow; */
-  display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
-  margin-bottom: 20px;
-}
-
-.hidden-message-container > p {
-  margin: 0px;
-}
-
-.error-message {
-  color: red;
-}
-
-.trip-estimated-cost {
-  color: #717682;
-  font-style: italic;
+  flex-wrap: wrap;
 }
 
 .past-trips-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 30px;
 }
 
 .past-trip-card {
@@ -213,7 +193,6 @@ button {
   font-size: 18px;
   display: flex;
   margin: 15px;
-  /* border: 1px solid pink; */
   border-radius: 15px;
   padding: 5px;
 }
@@ -238,15 +217,29 @@ button {
   font-size: 20px;
 }
 
-.success-message {
-  font-style: italic;
-  animation: 1.2s ease fade;
-  animation-delay: 1.0s;
+/* Miscellaneous Styles */
+
+.expenses {
+  font-size: 24px;
+}
+
+.text-blue {
+  color: #316bff;
+}
+
+.dot-divider {
+  margin: 0px 5px;
+}
+
+.error-message {
+  color: red;
 }
 
 .hidden {
   display: none;
 }
+
+/* Animations */
 
 @keyframes fade {
   0% {
@@ -257,8 +250,10 @@ button {
   }
 }
 
+/* Media Queries */
+
 @media screen and (max-width: 1312px) {
-  .upcoming-and-pending {
+  .trips-container {
     flex-direction: column;
     align-items: center;
   }
@@ -271,6 +266,9 @@ button {
   .destination-image {
     width: 580px;
     height: 360px;
+  }
+  .past-destination-image {
+    width: 200px;
   }
 }
 
@@ -295,7 +293,7 @@ button {
     width: 100%;
     height: 680px;
   }
-  .traveler-details {
+  .all-trips-section {
     width: 100%;
   }
   .travel-expenses {

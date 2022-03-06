@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
   <title>Travel Tracker</title>
 </head>
 <body>
   <header>
     <h1>Travel <span class="text-blue">Tracker</span></h1>
     <h2>Welcome, <span id="travelerName">traveler</span>!</h2>
-    <p class="travel-expenses"><span class="js-travel-expenses text-blue expenses">$0.00</span> spent to date</p>
+    <h3 class="travel-expenses"><span class="js-travel-expenses text-blue expenses">$0.00</span> spent to date</h3>
   </header>
   <main>
     <form class="js-booking-form booking-form">
@@ -92,8 +92,8 @@
         <button class="submit-button js-submit-booking-button">Submit</button>
       </div>
     </form>
-    <section class="traveler-details">
-      <div class="upcoming-and-pending">
+    <section class="all-trips-section">
+      <div class="trips-container">
         <div class="upcoming-trips-column trip-column">
           <h2>Upcoming trips</h2>
           <div class="js-upcoming-trips">
@@ -107,7 +107,7 @@
           </div>
         </div>
       </div>
-      <div class="upcoming-and-pending">
+      <div class="trips-container">
         <div class="past-trips-container">
           <h2>Where you've been</h2>
           <div class="js-past-trips past-trips">
