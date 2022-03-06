@@ -1,6 +1,17 @@
 # Travel Tracker
 
+**A front end application built by Kim Ward.**
 
+Travel Tracker is the final solo project built during Mod 2 of Turing School of Software & Design. This project focused on using Test Driven Development and Object Oriented Programming to build an interactive travel site where users can log in to view their trips and book a new trip. The Fetch API was used to retrieve and post data. The specifications can be found [here](https://frontend.turing.edu/projects/travel-tracker.html).
+
+## Goals
+
+- Use OOP to drive the design of the application and the code
+- Work with an API to send and receive data
+- Solidify the code review process
+- Create a robust test suite that thoroughly tests all functionality of a client-side application
+
+<img width="1440" alt="Screen Shot 2022-03-06 at 12 15 38 PM" src="https://user-images.githubusercontent.com/79027364/156936358-06fd6d74-f797-4ddc-bd4a-9103c84deb77.png">
 
 ## How to Run
 1. Clone the repo down to your machine
