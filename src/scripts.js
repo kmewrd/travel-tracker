@@ -262,6 +262,16 @@ function validateUsername() {
   }
 }
 
+function validatePassword() {
+  const password = userPassword.value;
+  if (password === "traveler") {
+    return true;
+  } else {
+    show([invalidLoginErrorMessage]);
+    return false;
+  }
+}
+
 // event listeners
 window.addEventListener('load', fetchAllData);
 loginButton.addEventListener('click', function(e) {
