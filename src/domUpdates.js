@@ -68,6 +68,11 @@ const domUpdates = {
   renderEstimatedTripCost(cost) {
     const estimatedCost = document.querySelector('.trip-estimated-cost');
     estimatedCost.innerText = `Estimated cost: $${cost}`;
+  },
+  renderBackgroundImage(src, alt) {
+    const backgroundImage = document.querySelector('.js-background-image');
+    backgroundImage.src = `${src}`;
+    backgroundImage.alt = `${alt}`;
   }
 };
 

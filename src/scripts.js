@@ -19,7 +19,6 @@ const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
 const successMessage = document.querySelector('.success-message');
-const backgroundImage = document.querySelector('.js-background-image');
 
 // global variables
 let traveler;
@@ -231,10 +230,8 @@ function hide(elements) {
 
 function generateBackgroundImage() {
   const destinationID = getRandomDestinationID(destinations);
-  const destinationSrc = destinations.find(destination => destination.id === destinationID).image;
-  const destinationAlt = destinations.find(destination => destination.id === destinationID).alt;
-  backgroundImage.src = `${destinationSrc}`;
-  backgroundImage.alt = `${destinationAlt}`;
+  const destination = destinations.find(destination => destination.id === destinationID);
+  domUpdates.renderBackgroundImage(destination.image, destination.alt);
 }
 
 function getRandomDestinationID(destinations) {
