@@ -16,21 +16,23 @@
     <h3 class="travel-expenses"><span class="js-travel-expenses text-blue expenses">$0.00</span> spent to date</h3>
   </header>
   <main>
-    <form class="js-login-form login-form">
-      <div class="form-content-container">
-        <h2>Welcome! Please login.</h2>
-        <div class="login-inputs-container">
-          <label for="username">Username</label>
-          <input id="username" type="text" required>
-          <label for="password">Password</label>
-          <input id="password" type="text" required>
+    <div class=login-view-container>
+      <form class="js-login-form login-form">
+        <div class="form-content-container">
+          <h2>Welcome! Please login.</h2>
+          <div class="login-inputs-container">
+            <label for="username">Username</label>
+            <input id="username" type="text" required>
+            <label for="password">Password</label>
+            <input id="password" type="text" required>
+          </div>
+          <div class="hidden-message-container">
+          </div>
+          <button class="js-login-button">Login</button>
         </div>
-        <div class="hidden-message-container">
-        </div>
-        <button class="js-login-button">Login</button>
-      </div>
-    </form>
-    <img class="background-image-large" src="https://images.unsplash.com/photo-1534351590666-13e3e96b5017?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="canal with boats and trees and buildings along the side">
+      </form>
+      <img class="js-background-image background-image-large" src="https://images.unsplash.com/photo-1534758607507-754e582adfa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="canal with boats and trees and buildings along the side">
+    </div>
     <form class="js-booking-form booking-form hidden">
       <div class="form-content-container">
         <h2>Book your next trip</h2>
