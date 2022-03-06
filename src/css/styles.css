@@ -36,36 +36,6 @@ form {
   margin-top: 86px;
 }
 
-.login-view-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.login-form {
-  height: 440px;
-  width: 400px;
-  border-radius: 15px;
-  z-index: 1;
-}
-
-.login-inputs-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 200px;
-}
-
-.background-image-large {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
-  position: absolute;
-}
-
 label {
   font-size: 18px;
   font-weight: 600;
@@ -106,6 +76,38 @@ button {
 button:hover {
   cursor: pointer;
   background-color: #1549cf;
+}
+
+/* Login View */
+
+.login-view-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  height: 440px;
+  width: 400px;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.login-inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 200px;
+}
+
+.background-image-large {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
 }
 
 /* Form Styles */
@@ -269,6 +271,10 @@ button:hover {
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 /* Animations */
