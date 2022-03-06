@@ -22,6 +22,7 @@ const successMessage = document.querySelector('.success-message');
 const userLogin = document.getElementById('username');
 const userPassword = document.getElementById('password');
 const invalidLoginErrorMessage = document.querySelector('.invalid-username-password-message');
+const loginButton = document.querySelector('.js-login-button');
 
 // global variables
 let traveler;
@@ -245,14 +246,36 @@ function getRandomDestinationID(destinations) {
   return destinationID;
 }
 
+// function authenticateUser() {
+//
+// }
+
+function validateUsername() {
+  let username = userLogin.value;
+  if (username.length < 9) {
+    show([invalidLoginErrorMessage]);
+  } else {
+    const letters = username.split('').slice(0, 8).join('');
+    const number = parseInt(username.split('').slice(8).join(''));
+    username = [letters, number];
+    return username;
+  }
+}
+
 // event listeners
 window.addEventListener('load', fetchAllData);
+loginButton.addEventListener('click', function(e) {
+  validateUsername();
+  // authenticateUser();
+});
+
 bookingForm.addEventListener('input', function() {
   validateTripDate();
   validateTripDuration();
   validateTripGuests();
   checkFieldsToShowTripCost();
 });
+
 submitBookingButton.addEventListener('click', function(e) {
   e.preventDefault();
   validateBookingForm();
