@@ -19,6 +19,9 @@ const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
 const successMessage = document.querySelector('.success-message');
+const userLogin = document.getElementById('username');
+const userPassword = document.getElementById('password');
+const invalidLoginErrorMessage = document.querySelector('.invalid-username-password-message');
 
 // global variables
 let traveler;
@@ -235,7 +238,10 @@ function generateBackgroundImage() {
 }
 
 function getRandomDestinationID(destinations) {
-  const destinationID = Math.floor(Math.random() * destinations.length);
+  let destinationID = Math.floor(Math.random() * destinations.length);
+  if (destinationID === 0) {
+    destinationID += 1;
+  }
   return destinationID;
 }
 
