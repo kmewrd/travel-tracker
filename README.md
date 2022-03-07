@@ -30,6 +30,8 @@ Travel Tracker is the final solo project built during Mod 2 of Turing School of 
 
 ### Future Additions & Improvements
 - Add a logout button to the header.
+- Add local storage to save requested trips.
+- Add toggle to expand and collapse the form when it's at the top of the page on mobile devices.
 - Allow users to filter view by all trips, upcoming trips, and pending trips.
 - Add a profile view so users can view their account details and make changes to their name and traveler type.
 - Add a travel agency view with their own login and dashboard of trip requests. Allow them to approve or deny trip requests, search users by name, and view traveler profiles to suggest activities for their trips. Agents will also be able to see the total income generated this year and the number of travelers on trips for today's date.
