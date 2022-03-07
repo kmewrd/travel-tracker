@@ -95,10 +95,10 @@ button {
   @include flex-column($justify-content: space-evenly);
   height: 40px;
   margin-bottom: 20px;
-}
 
-.hidden-message-container > p {
-  margin: 0px;
+  > * {
+    margin: 0px;
+  }
 }
 
 .trip-estimated-cost {
@@ -145,13 +145,16 @@ button {
   border-radius: 10px;
 }
 
-.trip-details > * {
-  margin: 5px 10px;
+.trip-details {
+  > * {
+    margin: 5px 10px;
+  }
+
+  > p {
+    font-size: 20px;
+  }
 }
 
-.trip-details > p {
-  font-size: 20px;
-}
 
 .location-name {
   font-size: 24px;
@@ -192,10 +195,10 @@ button {
 
 .past-trip-details {
   margin: 5px 10px;
-}
 
-.past-trip-details > * {
-  margin: 5px 0px;
+  > * {
+    margin: 5px 0px;
+  }
 }
 
 .past-location-name {
