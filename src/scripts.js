@@ -36,18 +36,28 @@ let destinations;
 
 // functions
 function fetchAllData() {
-  Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
+  Promise.all([fetchData('travelers'), fetchData('trips')])
   .then(data => {
-    initializeData(42, data[0], data[1], data[2]);
-    generateBackgroundImage();
+    initializeTraveler(42, data[0], data[1]);
     updateDashboard();
   })
 }
 
-function initializeData(travelerID, travelerData, tripsData, destinationsData) {
+function fetchDestinations() {
+  Promise.all([fetchData('destinations')])
+  .then(data => {
+    initializeDestinations(data[0]);
+    generateBackgroundImage();
+  })
+}
+
+function initializeDestinations(destinationsData) {
+  destinations = destinationsData.map(destination => new Destination(destination));
+}
+
+function initializeTraveler(travelerID, travelerData, tripsData) {
   travelers = travelerData.map(traveler => new Traveler(traveler));
   trips = tripsData.map(trip => new Trip(trip));
-  destinations = destinationsData.map(destination => new Destination(destination));
   traveler = travelers.find(traveler => traveler.id === travelerID)
   traveler.findMyTrips(trips);
   traveler.findMyDestinations(destinations);
@@ -239,7 +249,9 @@ function hide(elements) {
 
 function generateBackgroundImage() {
   const destinationID = getRandomDestinationID(destinations);
+  console.log(destinationID);
   const destination = destinations.find(destination => destination.id === destinationID);
+  console.log(destination);
   domUpdates.renderBackgroundImage(destination.image, destination.alt);
 }
 
@@ -287,7 +299,7 @@ function validatePassword() {
 }
 
 // event listeners
-window.addEventListener('load', fetchAllData);
+window.addEventListener('load', fetchDestinations);
 loginButton.addEventListener('click', function(e) {
   e.preventDefault();
   authenticateUser();
