@@ -88,7 +88,7 @@ article {
 button {
   font-family: $main-font;
   font-weight: 600;
-  background-color: $bright-blue;
+  background-color: $accent-color;
   color: #fff;
   border: 0;
   width: 300px;
@@ -99,7 +99,7 @@ button {
 
   &:hover {
     cursor: pointer;
-    background-color: scale-color($bright-blue, $lightness: -20%);
+    background-color: scale-color($accent-color, $lightness: -20%);
   }
 }
 
@@ -298,7 +298,7 @@ button {
 }
 
 .text-blue {
-  color: $bright-blue;
+  color: $accent-color;
 }
 
 .dot-divider {
