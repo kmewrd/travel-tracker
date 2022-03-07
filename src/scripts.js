@@ -125,7 +125,6 @@ const getPendingTrips = () => {
   const myTrips = [...traveler.trips];
   let pendingTrips = myTrips.filter(trip => trip.status === 'pending');
   pendingTrips = helperFunctions.formatDateWithDay(pendingTrips);
-  console.log(pendingTrips);
   domUpdates.renderPendingTrips(pendingTrips);
 }
 
@@ -140,14 +139,12 @@ const updateDashboard = () => {
   getPastTrips();
   getPendingTrips();
   getAnnualTravelExpenses();
-  console.log('Dashboard has been updated.')
 }
 
 const fetchTravelerAndTrips = id => {
   Promise.all([fetchData(`travelers/${id}`), fetchData('trips')])
   .then(data => {
     initializeTraveler(data[0], data[1].trips);
-    console.log(traveler.id)
     updateDashboard();
   })
 }
