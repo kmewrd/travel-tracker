@@ -74,7 +74,7 @@ button {
 
   &:hover {
     cursor: pointer;
-    background-color: #1549cf;
+    background-color: scale-color($bright-blue, $lightness: -20%);
   }
 }
 
