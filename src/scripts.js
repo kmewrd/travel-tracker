@@ -288,7 +288,8 @@ const submitBookingRequest = () => {
   const numGuestsIsValid = validateTripGuests();
   if (startDate.value && tripDuration.value && numberOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
     const newTrip = makeTripObject();
-    postData('trips', newTrip);
+    Promise.all([postData('trips', newTrip)])
+    .then(data => fetchTravelerAndTrips(traveler.id));
     hide([estimatedTripCost]);
     showBookingSuccessMessage();
     clearBookingForm();
@@ -315,5 +316,4 @@ submitBookingButton.addEventListener('click', e => {
   e.preventDefault();
   validateBookingForm();
   submitBookingRequest();
-  fetchTravelerAndTrips(traveler.id);
 });
