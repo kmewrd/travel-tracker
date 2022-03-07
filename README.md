@@ -11,7 +11,7 @@ Travel Tracker is the final solo project built during Mod 2 of Turing School of 
 - Solidify the code review process
 - Create a robust test suite that thoroughly tests all functionality of a client-side application
 
-<img width="1440" alt="Screen Shot 2022-03-06 at 12 15 38 PM" src="https://user-images.githubusercontent.com/79027364/156936358-06fd6d74-f797-4ddc-bd4a-9103c84deb77.png">
+<img width="1440" alt="Login page for Travel Tracker website" src="https://user-images.githubusercontent.com/79027364/156955676-2ca728dd-72d9-41e5-8c7f-8603ab0f8617.png">
 
 ## How to Run
 1. Clone the repo down to your machine
@@ -19,6 +19,10 @@ Travel Tracker is the final solo project built during Mod 2 of Turing School of 
 3. Open the root directory for each repo and run `npm install` to install dependencies
 4. Run `npm start` in each repo to initialize the webpage and web server
 5. Open the site by copying and pasting the server location http://localhost:8080/ in your address bar
+6. To log in, enter `traveler` followed by a number between 1 and 50 in the username field
+7. The password for all users is `traveler`
+
+<img width="1440" alt="Dashboard view on Travel Tracker website" src="https://user-images.githubusercontent.com/79027364/156955753-01634b9f-79dd-4a9f-b861-dc4c7dc0f42e.png">
 
 ### Technologies Used
 - JavaScript
@@ -30,6 +34,8 @@ Travel Tracker is the final solo project built during Mod 2 of Turing School of 
 
 ### Future Additions & Improvements
 - Add a logout button to the header.
+- Add local storage to save requested trips.
+- Add toggle to expand and collapse the form when it's at the top of the page on mobile devices.
 - Allow users to filter view by all trips, upcoming trips, and pending trips.
 - Add a profile view so users can view their account details and make changes to their name and traveler type.
 - Add a travel agency view with their own login and dashboard of trip requests. Allow them to approve or deny trip requests, search users by name, and view traveler profiles to suggest activities for their trips. Agents will also be able to see the total income generated this year and the number of travelers on trips for today's date.

@@ -63,11 +63,16 @@ const domUpdates = {
   },
   renderAnnualTravelExpenses(cost) {
     const travelExpenses = document.querySelector('.js-travel-expenses');
-    travelExpenses.innerText = `$${cost}.00`;
+    travelExpenses.innerText = `$${cost}`;
   },
   renderEstimatedTripCost(cost) {
     const estimatedCost = document.querySelector('.trip-estimated-cost');
     estimatedCost.innerText = `Estimated cost: $${cost}`;
+  },
+  renderBackgroundImage(src, alt) {
+    const backgroundImage = document.querySelector('.js-background-image');
+    backgroundImage.src = `${src}`;
+    backgroundImage.alt = `${alt}`;
   }
 };
 
