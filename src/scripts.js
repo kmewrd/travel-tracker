@@ -127,6 +127,7 @@ const getPendingTrips = () => {
   const myTrips = [...traveler.trips];
   let pendingTrips = myTrips.filter(trip => trip.status === 'pending');
   pendingTrips = helperFunctions.formatDateWithDay(pendingTrips);
+  console.log(pendingTrips);
   domUpdates.renderPendingTrips(pendingTrips);
 }
 
@@ -141,12 +142,14 @@ const updateDashboard = () => {
   getPastTrips();
   getPendingTrips();
   getAnnualTravelExpenses();
+  console.log('Dashboard has been updated.')
 }
 
 const fetchTravelerAndTrips = id => {
   Promise.all([fetchData(`travelers/${id}`), fetchData('trips')])
   .then(data => {
     initializeTraveler(data[0], data[1].trips);
+    console.log(traveler.id)
     updateDashboard();
   })
 }
@@ -192,11 +195,11 @@ const authenticateUser = () => {
 
 // refactor to use comparison operator instead of sort
 const validateTripDate = () => {
-  const today = helperFunctions.getTodayDate();
-  const tripStartDate = startDate.value;
-  let dateCompare = [today, tripStartDate];
-  dateCompare = dateCompare.sort((a, b) => new Date(a) - new Date(b));
-  if (dateCompare[0] != today) {
+  const today = new Date(helperFunctions.getTodayDate());
+  const tripStartDate = new Date(startDate.value);
+  // let dateCompare = [today, tripStartDate];
+  // dateCompare = dateCompare.sort((a, b) => new Date(a) - new Date(b));
+  if (today > tripStartDate) {
     show([invalidDateErrorMessage]);
     return false;
   } else {
@@ -279,7 +282,7 @@ const clearBookingForm = () => {
   tripDestination.value = '0';
 }
 
-const showbookingSuccessMessage = () => {
+const showBookingSuccessMessage = () => {
   show([bookingSuccessMessage]);
   setTimeout(() => hide([bookingSuccessMessage]), 2000);
 }
@@ -292,7 +295,7 @@ const submitBookingRequest = () => {
     const newTrip = makeTripObject();
     postData('trips', newTrip);
     hide([estimatedTripCost]);
-    showbookingSuccessMessage();
+    showBookingSuccessMessage();
     clearBookingForm();
   }
 }
@@ -301,19 +304,19 @@ const submitBookingRequest = () => {
 
 window.addEventListener('load', fetchDestinations);
 
-loginButton.addEventListener('click', function(e) {
+loginButton.addEventListener('click', e => {
   e.preventDefault();
   authenticateUser();
 });
 
-bookingForm.addEventListener('input', function() {
+bookingForm.addEventListener('input', () => {
   validateTripDate();
   validateTripDuration();
   validateTripGuests();
   checkFieldsToShowTripCost();
 });
 
-submitBookingButton.addEventListener('click', function(e) {
+submitBookingButton.addEventListener('click', e => {
   e.preventDefault();
   validateBookingForm();
   submitBookingRequest();
