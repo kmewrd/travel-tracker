@@ -11,15 +11,15 @@ const bookingForm = document.querySelector('.js-booking-form');
 const dashboard = document.querySelector('.js-trips-dashboard');
 const startDate = document.getElementById('start-date');
 const tripDuration = document.getElementById('trip-duration');
-const numOfGuests = document.getElementById('num-guests');
+const numberOfGuests = document.getElementById('num-guests');
 const tripDestination = document.getElementById('trip-destination');
 const submitBookingButton = document.querySelector('.js-submit-booking-button');
 const invalidDateErrorMessage = document.querySelector('.invalid-date-msg');
 const invalidTripDurationMessage = document.querySelector('.invalid-duration-msg');
-const invalidNumGuestsMessage = document.querySelector('.invalid-guests-msg');
+const invalidGuestsMessage = document.querySelector('.invalid-guests-msg');
 const emptyFieldsErrorMessage = document.querySelector('.empty-fields-msg');
 const estimatedTripCost = document.querySelector('.trip-estimated-cost');
-const successMessage = document.querySelector('.success-message');
+const bookingSuccessMessage = document.querySelector('.success-message');
 const loginView = document.querySelector('.js-login-view');
 const userLogin = document.getElementById('username');
 const userPassword = document.getElementById('password');
@@ -134,14 +134,14 @@ function getAnnualTravelExpenses() {
 function estimateTripCost() {
   const destinationID = parseInt(tripDestination.value);
   const myDestination = destinations.find(destination => destination.id === destinationID);
-  const costBeforeAgencyFee = (tripDuration.value * myDestination.estimatedLodgingCostPerDay) + (numOfGuests.value * myDestination.estimatedFlightCostPerPerson * 2);
+  const costBeforeAgencyFee = (tripDuration.value * myDestination.estimatedLodgingCostPerDay) + (numberOfGuests.value * myDestination.estimatedFlightCostPerPerson * 2);
   const estimatedTotal = costBeforeAgencyFee + (costBeforeAgencyFee * .10);
   return estimatedTotal;
 }
 
 function validateBookingForm() {
   const dateIsCorrect = validateTripDate();
-  if (!startDate.value || !tripDuration.value || !numOfGuests.value || tripDestination.value === '0') {
+  if (!startDate.value || !tripDuration.value || !numberOfGuests.value || tripDestination.value === '0') {
     show([emptyFieldsErrorMessage]);
     return false;
   } else if (!dateIsCorrect) {
@@ -179,18 +179,18 @@ function validateTripDuration() {
 }
 
 function validateTripGuests() {
-  if (numOfGuests.value === '0') {
-    show([invalidNumGuestsMessage]);
+  if (numberOfGuests.value === '0') {
+    show([invalidGuestsMessage]);
     return false;
   } else {
-    hide([invalidNumGuestsMessage]);
+    hide([invalidGuestsMessage]);
     return true;
   }
 }
 
 function checkFieldsToShowTripCost() {
   const dateIsCorrect = validateTripDate();
-  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect) {
+  if (startDate.value && tripDuration.value && numberOfGuests.value && tripDestination.value != '0' && dateIsCorrect) {
     hide([emptyFieldsErrorMessage]);
     show([estimatedTripCost]);
     const newTripCost = estimateTripCost();
@@ -205,7 +205,7 @@ function makeTripObject() {
     id: trips.length + 1,
     userID: traveler.id,
     destinationID: parseInt(tripDestination.value),
-    travelers: parseInt(numOfGuests.value),
+    travelers: parseInt(numberOfGuests.value),
     date: startDate.value.split('-').join('/'),
     duration: parseInt(tripDuration.value),
     status: 'pending',
@@ -216,7 +216,7 @@ function makeTripObject() {
 function clearBookingForm() {
   startDate.value = '';
   tripDuration.value = '';
-  numOfGuests.value = '';
+  numberOfGuests.value = '';
   tripDestination.value = '0';
 }
 
@@ -224,18 +224,18 @@ function submitBookingRequest() {
   const dateIsCorrect = validateTripDate();
   const durationIsValid = validateTripDuration();
   const numGuestsIsValid = validateTripGuests();
-  if (startDate.value && tripDuration.value && numOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
+  if (startDate.value && tripDuration.value && numberOfGuests.value && tripDestination.value != '0' && dateIsCorrect && durationIsValid && numGuestsIsValid) {
     const newTrip = makeTripObject();
     postData('trips', newTrip);
     hide([estimatedTripCost]);
-    showSuccessMessage();
+    showbookingSuccessMessage();
     clearBookingForm();
   }
 }
 
-function showSuccessMessage() {
-  show([successMessage]);
-  setTimeout(() => hide([successMessage]), 2000);
+function showbookingSuccessMessage() {
+  show([bookingSuccessMessage]);
+  setTimeout(() => hide([bookingSuccessMessage]), 2000);
 }
 
 function show(elements) {
