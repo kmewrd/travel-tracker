@@ -1,4 +1,4 @@
-import './css/styles.css';
+import './css/base.scss';
 import {fetchData, postData} from './apiCalls';
 import domUpdates from './domUpdates';
 import helperFunctions from './utils';
