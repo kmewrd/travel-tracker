@@ -30,7 +30,6 @@ const expensesHeading = document.querySelector('.js-expenses');
 
 // global variables
 let traveler;
-let travelers;
 let trips;
 let destinations;
 
