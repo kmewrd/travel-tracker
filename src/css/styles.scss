@@ -25,15 +25,24 @@ header {
 main {
   display: flex;
   width: 100%;
+
+  @media screen and (max-width: 860px) {
+    flex-direction: column;
+  }
 }
 
 form {
   @include flex-column;
+  align-items: center;
   background-color: $off-white;
   width: 25%;
   min-width: 360px;
-  align-items: center;
   margin-top: 86px;
+
+  @media screen and (max-width: 860px) {
+    width: 100%;
+    height: 680px;
+  }
 }
 
 label {
@@ -58,6 +67,22 @@ select {
 article {
   background-color: #fff;
   width: 400px;
+
+  @media screen and (max-width: 1312px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 710px) {
+    width: 400px;
+  }
 }
 
 button {
@@ -75,6 +100,13 @@ button {
   &:hover {
     cursor: pointer;
     background-color: scale-color($bright-blue, $lightness: -20%);
+  }
+}
+
+/* Header Styles */
+.travel-expenses {
+  @media screen and (max-width: 860px) {
+    display: none;
   }
 }
 
@@ -117,16 +149,41 @@ button {
 .all-trips-section {
   width: 75%;
   margin-top: 86px;
+
+  @media screen and (max-width: 860px) {
+    width: 100%;
+  }
 }
 
 .trips-container {
   display: flex;
   justify-content: space-evenly;
+
+  @media screen and (max-width: 1312px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .trip-column {
   width: 400px;
   margin-top: 30px;
+
+  @media screen and (max-width: 1312px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 710px) {
+    width: 400px;
+  }
 }
 
 .trip-card {
@@ -143,6 +200,26 @@ button {
   object-fit: cover;
   margin: 10px;
   border-radius: 10px;
+
+  @media screen and (max-width: 1312px) {
+    width: 580px;
+    height: 360px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 380px;
+    height: 252px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 580px;
+    height: 360px;
+  }
+
+  @media screen and (max-width: 710px) {
+    width: 380px;
+    height: 252px;
+  }
 }
 
 .trip-details {
@@ -155,13 +232,18 @@ button {
   }
 }
 
-
 .location-name {
   font-size: 24px;
 }
 
 .card-text-secondary {
   color: $dark-gray;
+}
+
+.upcoming-trips-column {
+  @media screen and (max-width: 860px) {
+    margin-top: 0px;
+  }
 }
 
 .past-trips {
@@ -191,6 +273,10 @@ button {
   object-fit: cover;
   margin: 10px;
   border-radius: 10px;
+
+  @media screen and (max-width: 1312px) {
+    width: 200px;
+  }
 }
 
 .past-trip-details {
@@ -235,82 +321,5 @@ button {
   }
   100% {
     opacity: 0;
-  }
-}
-
-/* Media Queries */
-
-@media screen and (max-width: 1312px) {
-  .trips-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  article {
-    width: 600px;
-  }
-  .trip-column {
-    width: 600px;
-  }
-  .destination-image {
-    width: 580px;
-    height: 360px;
-  }
-  .past-destination-image {
-    width: 200px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  article {
-    width: 400px;
-  }
-  .trip-column {
-    width: 400px;
-  }
-  .destination-image {
-    width: 380px;
-    height: 252px;
-  }
-}
-
-@media screen and (max-width: 860px) {
-  main {
-    flex-direction: column;
-  }
-  form {
-    width: 100%;
-    height: 680px;
-  }
-  .all-trips-section {
-    width: 100%;
-  }
-  .travel-expenses {
-    display: none;
-  }
-  .upcoming-trips-column {
-    margin-top: 0px;
-  }
-  article {
-    width: 600px;
-  }
-  .trip-column {
-    width: 600px;
-  }
-  .destination-image {
-    width: 580px;
-    height: 360px;
-  }
-}
-
-@media screen and (max-width: 710px) {
-  article {
-    width: 400px;
-  }
-  .trip-column {
-    width: 400px;
-  }
-  .destination-image {
-    width: 380px;
-    height: 252px;
   }
 }
