@@ -1,11 +1,11 @@
-function fetchData(path) {
+const fetchData = path => {
   return fetch(`http://localhost:3001/api/v1/${path}`)
     .then(response => response.json())
     .then(data => data)
     .catch(err => console.log(err));
 }
 
-function postData(path, data) {
+const postData = (path, data) => {
   return fetch(`http://localhost:3001/api/v1/${path}`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
