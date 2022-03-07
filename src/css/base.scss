@@ -2,7 +2,7 @@
 
 body, html {
   background-color: $light-gray;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: $main-font;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -45,7 +45,7 @@ input,
 select {
   height: 36px;
   width: 300px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: $main-font;
   font-size: 16px;
   padding: 0;
 }
@@ -61,7 +61,7 @@ article {
 }
 
 button {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: $main-font;
   font-weight: 600;
   background-color: $bright-blue;
   color: #fff;
@@ -71,11 +71,11 @@ button {
   font-size: 18px;
   border-radius: 20px;
   transition: 0.2s;
-}
 
-button:hover {
-  cursor: pointer;
-  background-color: #1549cf;
+  &:hover {
+    cursor: pointer;
+    background-color: #1549cf;
+  }
 }
 
 /* Form Styles */
