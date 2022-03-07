@@ -1,7 +1,7 @@
 @import '_variables';
 
 body, html {
-  background-color: #eeeff3;
+  background-color: $light-gray;
   font-family: 'Nunito Sans', sans-serif;
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@ body, html {
 }
 
 header {
-  background-color: #fafbff;
+  background-color: $off-white;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -27,7 +27,7 @@ main {
 }
 
 form {
-  background-color: #fafbff;
+  background-color: $off-white;
   width: 25%;
   min-width: 360px;
   display: flex;
@@ -63,7 +63,7 @@ article {
 button {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: 600;
-  background-color: #316bff;
+  background-color: $bright-blue;
   color: #fff;
   border: 0;
   width: 300px;
@@ -108,7 +108,7 @@ button:hover {
 }
 
 .trip-estimated-cost {
-  color: #717682;
+  color: $dark-gray;
   font-style: italic;
 }
 
@@ -174,7 +174,7 @@ button:hover {
 }
 
 .card-text-secondary {
-  color: #717682;
+  color: $dark-gray;
 }
 
 .past-trips {
@@ -226,7 +226,7 @@ button:hover {
 }
 
 .text-blue {
-  color: #316bff;
+  color: $bright-blue;
 }
 
 .dot-divider {
