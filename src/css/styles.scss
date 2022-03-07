@@ -11,10 +11,10 @@ body, html {
 }
 
 header {
-  background-color: $off-white;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  background-color: $off-white;
   padding: 0px 2%;
   width: 96%;
   height: 86px;
@@ -28,11 +28,10 @@ main {
 }
 
 form {
+  @include flex-column;
   background-color: $off-white;
   width: 25%;
   min-width: 360px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 86px;
 }
@@ -82,25 +81,19 @@ button {
 /* Form Styles */
 
 .form-content-container {
-  display: flex;
-  flex-direction: column;
   margin-top: 30px;
   width: 300px;
 }
 
 .inputs-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  @include flex-column($justify-content: space-around);
   height: 400px;
   margin-bottom: 20px;
 }
 
 .hidden-message-container {
+  @include flex-column($justify-content: space-evenly);
   height: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   margin-bottom: 20px;
 }
 
@@ -122,8 +115,6 @@ button {
 /* Trips Container & Card Styles */
 
 .all-trips-section {
-  display: flex;
-  flex-direction: column;
   width: 75%;
   margin-top: 86px;
 }
@@ -141,8 +132,6 @@ button {
 .trip-card {
   font-weight: 600;
   font-size: 18px;
-  display: flex;
-  flex-direction: column;
   margin-bottom: 25px;
   border-radius: 15px;
   padding: 5px;
@@ -154,12 +143,6 @@ button {
   object-fit: cover;
   margin: 10px;
   border-radius: 10px;
-}
-
-.trip-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 }
 
 .trip-details > * {
@@ -185,16 +168,15 @@ button {
 }
 
 .past-trips-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: center;
   padding-bottom: 30px;
 }
 
 .past-trip-card {
+  display: flex;
   font-weight: 600;
   font-size: 18px;
-  display: flex;
   margin: 15px;
   border-radius: 15px;
   padding: 5px;

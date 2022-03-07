@@ -1,4 +1,8 @@
-@mixin flex-column() {
+@mixin flex-column($justify-content: false) {
   display: flex;
   flex-direction: column;
+
+  @if $justify-content {
+    justify-content: $justify-content;
+  }
 }
