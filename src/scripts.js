@@ -36,9 +36,9 @@ let destinations;
 
 // functions
 function fetchTravelerAndTrips(id) {
-  Promise.all([fetchData('travelers'), fetchData('trips')])
+  Promise.all([fetchData(`travelers/${id}`), fetchData('trips')])
   .then(data => {
-    initializeTraveler(id, data[0], data[1]);
+    initializeTraveler(data[0], data[1].trips);
     updateDashboard();
   })
 }
@@ -46,7 +46,7 @@ function fetchTravelerAndTrips(id) {
 function fetchDestinations() {
   Promise.all([fetchData('destinations')])
   .then(data => {
-    initializeDestinations(data[0]);
+    initializeDestinations(data[0].destinations);
     generateBackgroundImage();
   })
 }
@@ -55,10 +55,9 @@ function initializeDestinations(destinationsData) {
   destinations = destinationsData.map(destination => new Destination(destination));
 }
 
-function initializeTraveler(travelerID, travelerData, tripsData) {
-  travelers = travelerData.map(traveler => new Traveler(traveler));
+function initializeTraveler(travelerData, tripsData) {
   trips = tripsData.map(trip => new Trip(trip));
-  traveler = travelers.find(traveler => traveler.id === travelerID);
+  traveler = new Traveler(travelerData);
   traveler.findMyTrips(trips);
   traveler.findMyDestinations(destinations);
 }

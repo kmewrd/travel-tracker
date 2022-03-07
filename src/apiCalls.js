@@ -1,7 +1,7 @@
 function fetchData(path) {
   return fetch(`http://localhost:3001/api/v1/${path}`)
     .then(response => response.json())
-    .then(data => data[path])
+    .then(data => data)
     .catch(err => console.log(err));
 }
 
