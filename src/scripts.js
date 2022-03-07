@@ -25,6 +25,8 @@ const userLogin = document.getElementById('username');
 const userPassword = document.getElementById('password');
 const invalidLoginErrorMessage = document.querySelector('.invalid-username-password-message');
 const loginButton = document.querySelector('.js-login-button');
+const welcomeMessage = document.querySelector('.js-welcome-message');
+const expensesHeading = document.querySelector('.js-expenses');
 
 // global variables
 let traveler;
@@ -227,7 +229,8 @@ function showSuccessMessage() {
 }
 
 function show(elements) {
-  return elements.forEach(element => element.classList.remove('hidden'));
+  elements.forEach(element => element.classList.remove('hidden'));
+  elements.forEach(element => element.classList.remove('invisible'));
 }
 
 function hide(elements) {
@@ -258,7 +261,7 @@ function authenticateUser() {
 
 function showDashboard() {
   hide([loginView]);
-  show([bookingForm, dashboard]);
+  show([bookingForm, dashboard, welcomeMessage, expensesHeading]);
 }
 
 function validateUsername() {
