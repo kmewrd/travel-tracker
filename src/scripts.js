@@ -35,10 +35,10 @@ let trips;
 let destinations;
 
 // functions
-function fetchAllData() {
+function fetchTravelerAndTrips(id) {
   Promise.all([fetchData('travelers'), fetchData('trips')])
   .then(data => {
-    initializeTraveler(42, data[0], data[1]);
+    initializeTraveler(id, data[0], data[1]);
     updateDashboard();
   })
 }
@@ -58,7 +58,7 @@ function initializeDestinations(destinationsData) {
 function initializeTraveler(travelerID, travelerData, tripsData) {
   travelers = travelerData.map(traveler => new Traveler(traveler));
   trips = tripsData.map(trip => new Trip(trip));
-  traveler = travelers.find(traveler => traveler.id === travelerID)
+  traveler = travelers.find(traveler => traveler.id === travelerID);
   traveler.findMyTrips(trips);
   traveler.findMyDestinations(destinations);
 }
@@ -249,9 +249,7 @@ function hide(elements) {
 
 function generateBackgroundImage() {
   const destinationID = getRandomDestinationID(destinations);
-  console.log(destinationID);
   const destination = destinations.find(destination => destination.id === destinationID);
-  console.log(destination);
   domUpdates.renderBackgroundImage(destination.image, destination.alt);
 }
 
@@ -264,9 +262,10 @@ function getRandomDestinationID(destinations) {
 }
 
 function authenticateUser() {
-  const usernameIsValid = validateUsername();
+  const userID = validateUsername();
   const passwordIsValid = validatePassword();
-  if (usernameIsValid && passwordIsValid) {
+  if (userID && passwordIsValid) {
+    fetchTravelerAndTrips(userID);
     showDashboard();
   }
 }
