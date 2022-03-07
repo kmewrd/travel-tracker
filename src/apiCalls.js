@@ -19,9 +19,7 @@ const postData = (path, data) => {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data)
   })
-    .then(response => {
-      checkForErrors(response);
-    })
+    .then(response => checkForErrors(response))
     .catch(err => console.log(err));
 }
 
