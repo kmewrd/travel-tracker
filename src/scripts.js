@@ -193,12 +193,9 @@ const authenticateUser = () => {
   }
 }
 
-// refactor to use comparison operator instead of sort
 const validateTripDate = () => {
   const today = new Date(helperFunctions.getTodayDate());
   const tripStartDate = new Date(startDate.value);
-  // let dateCompare = [today, tripStartDate];
-  // dateCompare = dateCompare.sort((a, b) => new Date(a) - new Date(b));
   if (today > tripStartDate) {
     show([invalidDateErrorMessage]);
     return false;
