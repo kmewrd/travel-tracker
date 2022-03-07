@@ -92,9 +92,7 @@ const getUpcomingTrips = () => {
   let upcomingTrips = [];
   myTrips.push(today);
   sortDateLeastRecent(myTrips);
-  if (myTrips[myTrips.length - 1] === today) {
-    console.log('There are no upcoming trips.')
-  } else {
+  if (myTrips[myTrips.length - 1] != today) {
     const todayIndex = myTrips.indexOf(today);
     upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
     upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
