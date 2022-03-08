@@ -32,7 +32,7 @@ Once logged in, a user can see all of their trips displayed and sorted by date a
 **Book a Trip:**
 A booking form is displayed in the sidebar in desktop view. Users can fill out this form to request a new trip. Before submitting a request, the estimated cost for the trip is displayed when all form fields are valid. Upon submission the new trip populates in the Pending Trips column on the dashboard.
 
-<img width="1440" alt="Dashboard view on Travel Tracker website" src="https://user-images.githubusercontent.com/79027364/156955753-01634b9f-79dd-4a9f-b861-dc4c7dc0f42e.png">
+![Travel Tracker Application Demo](https://user-images.githubusercontent.com/79027364/157303638-016cfd41-808d-434a-afe8-4b8a53cb0999.gif)
 
 ### Technologies Used
 - JavaScript
