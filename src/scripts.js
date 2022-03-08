@@ -115,27 +115,21 @@ const getPastTrips = () => {
 }
 
 const getPendingTrips = () => {
-  const today = {date: helperFunctions.getTodayDate()};
+  const today = new Date();
   const myTrips = [...traveler.trips];
-  let pendingTrips = myTrips.filter(trip => trip.status === 'pending');
-  pendingTrips.push(today);
-  sortDateMostRecent(pendingTrips);
-  if (pendingTrips[0] === today && pendingTrips.length > 1) {
-    pendingTrips.shift();
-    console.log('All pending trips are past.');
-    let pendingTripsPast = helperFunctions.formatDateWithDay(pendingTrips);
-    domUpdates.renderPendingTrips([], pendingTripsPast);
-  } else if (pendingTrips[pendingTrips.length - 1] != today) {
-    console.log('Some pending trips are past and some are upcoming.');
-    const todayIndex = pendingTrips.indexOf(today);
-    pendingTrips = helperFunctions.formatDateWithDay(pendingTrips);
-    let pendingTripsPast = pendingTrips.slice(todayIndex);
-    domUpdates.renderPendingTrips(pendingTrips, pendingTripsPast);
-  } else {
-    pendingTrips.pop();
-    console.log('All pending trips are past, or there are no pending trips.')
-    pendingTrips = helperFunctions.formatDateWithDay(pendingTrips);
-    domUpdates.renderPendingTrips(pendingTrips, []);
+  sortDateMostRecent(myTrips);
+  let pendingTripsUpcoming = myTrips.filter(trip => {
+    let startDate = new Date(trip.date);
+    return startDate > today;
+  }).filter(trip => trip.status === 'pending');
+  let pendingTripsPast = myTrips.filter(trip => {
+    let startDate = new Date(trip.date);
+    return startDate < today;
+  }).filter(trip => trip.status === 'pending');
+  if (pendingTripsUpcoming.length || pendingTripsPast.length) {
+    pendingTripsUpcoming = helperFunctions.formatDateWithDay(pendingTripsUpcoming);
+    pendingTripsPast = helperFunctions.formatDateWithDay(pendingTripsPast);
+    domUpdates.renderPendingTrips(pendingTripsUpcoming, pendingTripsPast);
   }
 }
 
