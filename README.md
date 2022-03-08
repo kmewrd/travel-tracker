@@ -26,7 +26,7 @@ Travel Tracker is the final solo project built during Mod 2 of Turing School of 
 ## Features
 
 **Login:**
-On load, the user user sees a login form. To log in, enter `traveler` followed by a number between 1 and 50 in the username field. The password for all users is `traveler`.
+On load, the user user sees a login form. To log in, enter `traveler` followed by a number between 1 and 50 in the username field. The password for all users is `travel`.
 
 **User Dashboard:**
 Once logged in, a user can see all of their trips displayed and sorted by date according to trip type (upcoming, pending, or past). The header also includes the stats on how much they've spent on trips this year.
@@ -34,7 +34,7 @@ Once logged in, a user can see all of their trips displayed and sorted by date a
 **Book a Trip:**
 A booking form is displayed in the sidebar in desktop view. Users can fill out this form to request a new trip. Before submitting a request, the estimated cost for the trip is displayed when all form fields are valid. Upon submission the new trip populates in the Pending Trips column on the dashboard.
 
-![Travel Tracker Application Demo](https://user-images.githubusercontent.com/79027364/157303638-016cfd41-808d-434a-afe8-4b8a53cb0999.gif)
+![Travel Tracker Application Demo](https://user-images.githubusercontent.com/79027364/157329740-085522bd-806e-46c9-ab9d-22803dd1b5c1.gif)
 
 #### Accessibility & Responsive Layout
 

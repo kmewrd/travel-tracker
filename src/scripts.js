@@ -1,4 +1,4 @@
-import './css/styles.css';
+import './css/styles.scss';
 import {checkForErrors, checkForServerError, fetchData, postData} from './apiCalls';
 import domUpdates from './domUpdates';
 import helperFunctions from './utils';
@@ -176,7 +176,7 @@ const validateUsername = () => {
 
 const validatePassword = () => {
   const password = userPassword.value;
-  if (password === "traveler") {
+  if (password === "travel") {
     return true;
   } else {
     show([invalidLoginErrorMessage]);

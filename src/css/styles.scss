@@ -1,6 +1,9 @@
+@import '_variables';
+@import '_mixins';
+
 body, html {
-  background-color: #eeeff3;
-  font-family: 'Nunito Sans', sans-serif;
+  background-color: $light-gray;
+  font-family: $main-font;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -8,14 +11,14 @@ body, html {
 }
 
 header {
-  background-color: #fafbff;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  position: fixed;
+  background-color: $off-white;
   padding: 0px 2%;
   width: 96%;
   height: 86px;
-  position: fixed;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
@@ -24,16 +27,24 @@ main {
   display: flex;
   justify-content: center;
   width: 100%;
+
+  @media screen and (max-width: 860px) {
+    flex-direction: column;
+  }
 }
 
 form {
-  background-color: #fafbff;
+  @include flex-column;
+  align-items: center;
+  background-color: $off-white;
   width: 25%;
   min-width: 360px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 86px;
+
+  @media screen and (max-width: 860px) {
+    width: 100%;
+    height: 680px;
+  }
 }
 
 label {
@@ -45,7 +56,7 @@ input,
 select {
   height: 36px;
   width: 300px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: $main-font;
   font-size: 16px;
   padding: 0;
   padding-left: 5px;
@@ -59,12 +70,28 @@ select {
 article {
   background-color: #fff;
   width: 400px;
+
+  @media screen and (max-width: 1312px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 710px) {
+    width: 400px;
+  }
 }
 
 button {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: $main-font;
   font-weight: 600;
-  background-color: #316bff;
+  background-color: $accent-color;
   color: #fff;
   border: 0;
   width: 300px;
@@ -72,11 +99,18 @@ button {
   font-size: 18px;
   border-radius: 20px;
   transition: 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    background-color: scale-color($accent-color, $lightness: -20%);
+  }
 }
 
-button:hover {
-  cursor: pointer;
-  background-color: #1549cf;
+/* Header Styles */
+.travel-expenses {
+  @media screen and (max-width: 860px) {
+    display: none;
+  }
 }
 
 /* Login View */
@@ -114,38 +148,37 @@ button:hover {
 /* Form Styles */
 
 .form-content-container {
-  display: flex;
-  flex-direction: column;
   margin-top: 30px;
   width: 300px;
 }
 
 .inputs-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  @include flex-column($justify-content: space-around);
   height: 400px;
   margin-bottom: 20px;
 }
 
 .hidden-message-container {
+  @include flex-column($justify-content: space-evenly);
   height: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
   margin-bottom: 20px;
-}
 
-.hidden-message-container > p {
-  margin: 0px;
+  > * {
+    margin: 0px;
+  }
 }
 
 .booking-form {
   min-height: 100vh;
+
+  @media screen and (max-width: 860px) {
+    min-height: 640px;
+    max-height: 680px;
+  }
 }
 
 .trip-estimated-cost {
-  color: #717682;
+  color: $dark-gray;
   font-style: italic;
 }
 
@@ -158,27 +191,48 @@ button:hover {
 /* Trips Container & Card Styles */
 
 .all-trips-section {
-  display: flex;
-  flex-direction: column;
   width: 75%;
   margin-top: 86px;
+
+  @media screen and (max-width: 860px) {
+    width: 100%;
+  }
 }
 
 .trips-container {
   display: flex;
   justify-content: space-evenly;
+
+  @media screen and (max-width: 1312px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .trip-column {
   width: 400px;
   margin-top: 30px;
+
+  @media screen and (max-width: 1312px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 600px;
+  }
+
+  @media screen and (max-width: 710px) {
+    width: 400px;
+  }
 }
 
 .trip-card {
   font-weight: 600;
   font-size: 18px;
-  display: flex;
-  flex-direction: column;
   margin-bottom: 25px;
   border-radius: 15px;
   padding: 5px;
@@ -192,6 +246,22 @@ button:hover {
   text-align: right;
   width: 370px;
   opacity: 0.7;
+
+  @media screen and (max-width: 1312px) {
+    width: 570px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 370px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 570px;
+  }
+
+  @media screen and (max-width: 710px) {
+    width: 370px;
+  }
 }
 
 .destination-image {
@@ -200,20 +270,36 @@ button:hover {
   object-fit: cover;
   margin: 10px;
   border-radius: 10px;
+
+  @media screen and (max-width: 1312px) {
+    width: 580px;
+    height: 360px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 380px;
+    height: 252px;
+  }
+
+  @media screen and (max-width: 860px) {
+    width: 580px;
+    height: 360px;
+  }
+
+  @media screen and (max-width: 710px) {
+    width: 380px;
+    height: 252px;
+  }
 }
 
 .trip-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
+  > * {
+    margin: 5px 10px;
+  }
 
-.trip-details > * {
-  margin: 5px 10px;
-}
-
-.trip-details > p {
-  font-size: 20px;
+  > p {
+    font-size: 20px;
+  }
 }
 
 .location-name {
@@ -221,7 +307,13 @@ button:hover {
 }
 
 .card-text-secondary {
-  color: #717682;
+  color: $dark-gray;
+}
+
+.upcoming-trips-column {
+  @media screen and (max-width: 860px) {
+    margin-top: 0px;
+  }
 }
 
 .past-trips {
@@ -231,16 +323,15 @@ button:hover {
 }
 
 .past-trips-container {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: center;
   padding-bottom: 30px;
 }
 
 .past-trip-card {
+  display: flex;
   font-weight: 600;
   font-size: 18px;
-  display: flex;
   margin: 15px;
   border-radius: 15px;
   padding: 5px;
@@ -252,14 +343,18 @@ button:hover {
   object-fit: cover;
   margin: 10px;
   border-radius: 10px;
+
+  @media screen and (max-width: 1312px) {
+    width: 200px;
+  }
 }
 
 .past-trip-details {
   margin: 5px 10px;
-}
 
-.past-trip-details > * {
-  margin: 5px 0px;
+  > * {
+    margin: 5px 0px;
+  }
 }
 
 .past-location-name {
@@ -273,7 +368,7 @@ button:hover {
 }
 
 .text-blue {
-  color: #316bff;
+  color: $accent-color;
 }
 
 .dot-divider {
@@ -300,92 +395,5 @@ button:hover {
   }
   100% {
     opacity: 0;
-  }
-}
-
-/* Media Queries */
-
-@media screen and (max-width: 1312px) {
-  .trips-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  article {
-    width: 600px;
-  }
-  .trip-column {
-    width: 600px;
-  }
-  .past-status {
-    width: 570px;
-  }
-  .destination-image {
-    width: 580px;
-    height: 360px;
-  }
-  .past-destination-image {
-    width: 200px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  article {
-    width: 400px;
-  }
-  .trip-column {
-    width: 400px;
-  }
-  .destination-image {
-    width: 380px;
-    height: 252px;
-  }
-}
-
-@media screen and (max-width: 860px) {
-  main {
-    flex-direction: column;
-  }
-  form {
-    width: 100%;
-    height: 680px;
-  }
-  .booking-form {
-    min-height: 640px;
-    max-height: 680px;
-  }
-  .all-trips-section {
-    width: 100%;
-  }
-  .travel-expenses {
-    display: none;
-  }
-  .upcoming-trips-column {
-    margin-top: 0px;
-  }
-  article {
-    width: 600px;
-  }
-  .trip-column {
-    width: 600px;
-  }
-  .past-status {
-    width: 570px;
-  }
-  .destination-image {
-    width: 580px;
-    height: 360px;
-  }
-}
-
-@media screen and (max-width: 710px) {
-  article {
-    width: 400px;
-  }
-  .trip-column {
-    width: 400px;
-  }
-  .destination-image {
-    width: 380px;
-    height: 252px;
   }
 }
