@@ -116,8 +116,6 @@ const getPastTrips = () => {
     pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
     pastTrips = helperFunctions.formatMonthYear(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
-  } else {
-    console.log('There are no past trips.')
   }
 }
 
