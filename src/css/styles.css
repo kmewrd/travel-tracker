@@ -349,6 +349,10 @@ button:hover {
     width: 100%;
     height: 680px;
   }
+  .booking-form {
+    min-height: 640px;
+    max-height: 680px;
+  }
   .all-trips-section {
     width: 100%;
   }
