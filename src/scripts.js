@@ -176,7 +176,7 @@ const validateUsername = () => {
 
 const validatePassword = () => {
   const password = userPassword.value;
-  if (password === "traveler") {
+  if (password === "travel") {
     return true;
   } else {
     show([invalidLoginErrorMessage]);
