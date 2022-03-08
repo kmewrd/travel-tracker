@@ -140,6 +140,10 @@ button:hover {
   margin: 0px;
 }
 
+.booking-form {
+  min-height: 100vh;
+}
+
 .trip-estimated-cost {
   color: #717682;
   font-style: italic;
