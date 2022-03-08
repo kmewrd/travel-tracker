@@ -89,12 +89,11 @@ const sortDateMostRecent = trips => {
 const getUpcomingTrips = () => {
   const today = {date: helperFunctions.getTodayDate()};
   const myTrips = [...traveler.trips];
-  let upcomingTrips = [];
   myTrips.push(today);
   sortDateLeastRecent(myTrips);
   if (myTrips[myTrips.length - 1] != today) {
     const todayIndex = myTrips.indexOf(today);
-    upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+    let upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
     upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
     domUpdates.renderUpcomingTrips(upcomingTrips);
   }
@@ -103,17 +102,16 @@ const getUpcomingTrips = () => {
 const getPastTrips = () => {
   const today = {date: helperFunctions.getTodayDate()};
   const myTrips = [...traveler.trips];
-  let pastTrips = [];
   myTrips.push(today);
   sortDateMostRecent(myTrips);
   if (myTrips[0] === today) {
     myTrips.shift();
-    pastTrips = [...myTrips];
+    let pastTrips = [...myTrips];
     pastTrips = helperFunctions.formatMonthYear(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
   } else if (myTrips[myTrips.length - 1] != today) {
     const todayIndex = myTrips.indexOf(today);
-    pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+    let pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
     pastTrips = helperFunctions.formatMonthYear(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
   }
