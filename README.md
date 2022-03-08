@@ -40,7 +40,7 @@ A booking form is displayed in the sidebar in desktop view. Users can fill out t
 
 This application was tested with Lighthouse and the WAVE Chrome extension in order to address the needs of all users.
 
-
+![Travel Tracker Mobile View](https://user-images.githubusercontent.com/79027364/157307114-83033dd6-5b9b-472e-82a6-39dbca085007.gif)
 
 ---
 
