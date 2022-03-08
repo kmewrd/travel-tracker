@@ -45,7 +45,7 @@ const domUpdates = {
         pendingTrips.innerHTML += `
         <article class="trip-card">
           <div>
-            <h3 class="past-status">PAST</h3>
+            <h3 class="past-status">PAST DATE</h3>
             <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
           </div>
           <div class="trip-details">
