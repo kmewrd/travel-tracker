@@ -184,6 +184,16 @@ button:hover {
   padding: 5px;
 }
 
+.past-status {
+  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+  position: absolute;
+  text-align: right;
+  width: 370px;
+  opacity: 0.7;
+}
+
 .destination-image {
   width: 380px;
   height: 252px;
@@ -306,6 +316,9 @@ button:hover {
   .trip-column {
     width: 600px;
   }
+  .past-status {
+    width: 570px;
+  }
   .destination-image {
     width: 580px;
     height: 360px;
@@ -350,6 +363,9 @@ button:hover {
   }
   .trip-column {
     width: 600px;
+  }
+  .past-status {
+    width: 570px;
   }
   .destination-image {
     width: 580px;
