@@ -87,13 +87,14 @@ const sortDateMostRecent = trips => {
 }
 
 const getUpcomingTrips = () => {
-  const today = {date: helperFunctions.getTodayDate()};
+  const today = new Date();
   const myTrips = [...traveler.trips];
-  myTrips.push(today);
   sortDateLeastRecent(myTrips);
-  if (myTrips[myTrips.length - 1] != today) {
-    const todayIndex = myTrips.indexOf(today);
-    let upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+  if (myTrips.length) {
+    let upcomingTrips = myTrips.filter(trip => {
+      let startDate = new Date(trip.date);
+      return startDate > today;
+    }).filter(trip => trip.status === 'approved');
     upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
     domUpdates.renderUpcomingTrips(upcomingTrips);
   }
