@@ -21,6 +21,8 @@ Travel Tracker is the final solo project built during Mod 2 of Turing School of 
 4. Run `npm start` in each repo to initialize the webpage and web server
 5. Open the site by copying and pasting the server location http://localhost:8080/ in your address bar
 
+---
+
 ## Features
 
 **Login:**
@@ -34,6 +36,14 @@ A booking form is displayed in the sidebar in desktop view. Users can fill out t
 
 ![Travel Tracker Application Demo](https://user-images.githubusercontent.com/79027364/157303638-016cfd41-808d-434a-afe8-4b8a53cb0999.gif)
 
+#### Accessibility & Responsive Layout
+
+This application was tested with Lighthouse and the WAVE Chrome extension in order to address the needs of all users.
+
+
+
+---
+
 ### Technologies Used
 - JavaScript
 - CSS/SCSS
@@ -42,13 +52,12 @@ A booking form is displayed in the sidebar in desktop view. Users can fill out t
 - Mocha & Chai
 - Atom
 
-### Future Additions & Improvements
+#### Future Additions & Improvements
 - Add a logout button to the header.
 - Add local storage to save requested trips.
 - Add toggle to expand and collapse the form when it's at the top of the page.
 - Allow users to filter view by all trips, upcoming trips, and pending trips.
 - Add a profile view so users can view their account details and make changes to their name and traveler type.
-- Add a travel agency view with their own login and dashboard of trip requests. Allow them to approve or deny trip requests, search users by name, and view traveler profiles to suggest activities for their trips. Agents will also be able to see the total income generated this year and the number of travelers on trips for today's date.
 
-### Design Inspiration
+#### Design Inspiration
 For the color palette, I was inspired by Dribble creator Dmitry Lauretsky's [Travel Agency Website](https://dribbble.com/shots/15163981-Travel-Agency-Website). I also drew inspiration from the Airbnb booking site in using rounded corners, small cards for past trips, an approachable sans-serif font, and minimal pops of color.
