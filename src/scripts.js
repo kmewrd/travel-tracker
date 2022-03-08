@@ -1,5 +1,5 @@
 import './css/styles.css';
-import {fetchData, postData} from './apiCalls';
+import {checkForErrors, checkForServerError, fetchData, postData} from './apiCalls';
 import domUpdates from './domUpdates';
 import helperFunctions from './utils';
 import Traveler from './Traveler';
@@ -87,45 +87,50 @@ const sortDateMostRecent = trips => {
 }
 
 const getUpcomingTrips = () => {
-  const today = {date: helperFunctions.getTodayDate()};
+  const today = new Date();
   const myTrips = [...traveler.trips];
-  let upcomingTrips = [];
-  myTrips.push(today);
   sortDateLeastRecent(myTrips);
-  if (myTrips[myTrips.length - 1] != today) {
-    const todayIndex = myTrips.indexOf(today);
-    upcomingTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
+  let upcomingTrips = myTrips.filter(trip => {
+    let startDate = new Date(trip.date);
+    return startDate > today;
+  }).filter(trip => trip.status === 'approved');
+  if (upcomingTrips.length) {
     upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
     domUpdates.renderUpcomingTrips(upcomingTrips);
   }
 }
 
 const getPastTrips = () => {
-  const today = {date: helperFunctions.getTodayDate()};
+  const today = new Date();
   const myTrips = [...traveler.trips];
-  let pastTrips = [];
-  myTrips.push(today);
   sortDateMostRecent(myTrips);
-  if (myTrips[0] === today) {
-    myTrips.shift();
-    pastTrips = [...myTrips];
+  let pastTrips = myTrips.filter(trip => {
+    let startDate = new Date(trip.date);
+    return startDate < today;
+  }).filter(trip => trip.status === 'approved');
+  if (pastTrips.length) {
     pastTrips = helperFunctions.formatMonthYear(pastTrips);
     domUpdates.renderPastTrips(pastTrips);
-  } else if (myTrips[myTrips.length - 1] != today) {
-    const todayIndex = myTrips.indexOf(today);
-    pastTrips = myTrips.slice(todayIndex).filter(trip => trip.status === 'approved');
-    pastTrips = helperFunctions.formatMonthYear(pastTrips);
-    domUpdates.renderPastTrips(pastTrips);
-  } else {
-    console.log('There are no past trips.')
   }
 }
 
 const getPendingTrips = () => {
+  const today = new Date();
   const myTrips = [...traveler.trips];
-  let pendingTrips = myTrips.filter(trip => trip.status === 'pending');
-  pendingTrips = helperFunctions.formatDateWithDay(pendingTrips);
-  domUpdates.renderPendingTrips(pendingTrips);
+  sortDateLeastRecent(myTrips);
+  let pendingTripsUpcoming = myTrips.filter(trip => {
+    let startDate = new Date(trip.date);
+    return startDate > today;
+  }).filter(trip => trip.status === 'pending');
+  let pendingTripsPast = myTrips.filter(trip => {
+    let startDate = new Date(trip.date);
+    return startDate < today;
+  }).filter(trip => trip.status === 'pending');
+  if (pendingTripsUpcoming.length || pendingTripsPast.length) {
+    pendingTripsUpcoming = helperFunctions.formatDateWithDay(pendingTripsUpcoming);
+    pendingTripsPast = helperFunctions.formatDateWithDay(pendingTripsPast);
+    domUpdates.renderPendingTrips(pendingTripsUpcoming, pendingTripsPast);
+  }
 }
 
 const getAnnualTravelExpenses = () => {
@@ -189,9 +194,11 @@ const authenticateUser = () => {
 }
 
 const validateTripDate = () => {
-  const today = new Date(helperFunctions.getTodayDate());
+  const today = new Date();
+  const todayDate = today.getDate();
+  let yesterday = today.setDate(todayDate - 1);
   const tripStartDate = new Date(startDate.value);
-  if (today > tripStartDate) {
+  if (tripStartDate <= yesterday) {
     show([invalidDateErrorMessage]);
     return false;
   } else {

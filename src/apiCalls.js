@@ -1,8 +1,12 @@
 const checkForErrors = (response) => {
-  if (response.ok) {
-    console.log('Trip successfully posted.', response);
-  } else {
-    console.log('Something went wrong.', response);
+  if (!response.ok) {
+    window.alert('Oops! Something went wrong. Please try again later.');
+  }
+}
+
+const checkForServerError = (err) => {
+  if (err.message === 'Failed to fetch') {
+    window.alert('Oops! Something went wrong. Please try again later.')
   }
 }
 
@@ -20,7 +24,7 @@ const postData = (path, data) => {
     body: JSON.stringify(data)
   })
     .then(response => checkForErrors(response))
-    .catch(err => console.log(err));
+    .catch(err => checkForServerError(err));
 }
 
-export {fetchData, postData};
+export {checkForErrors, checkForServerError, fetchData, postData};

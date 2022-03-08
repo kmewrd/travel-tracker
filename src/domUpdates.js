@@ -24,14 +24,30 @@ const domUpdates = {
       })
     }
   },
-  renderPendingTrips(trips) {
-    if (trips.length) {
-      const pendingTrips = document.querySelector('.js-pending-trips');
+  renderPendingTrips(trips, pastTrips) {
+    const pendingTrips = document.querySelector('.js-pending-trips');
+    if (trips.length || pastTrips.length) {
       pendingTrips.innerHTML = '';
       trips.forEach(trip => {
         pendingTrips.innerHTML += `
         <article class="trip-card">
           <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
+          <div class="trip-details">
+            <h3 class="location-name">${trip.destination.location}</h3>
+            <p>Departure: ${trip.date}</p>
+            <p>Status: <span class="status-pending">${trip.status}</span></p>
+            <p class="card-text-secondary">${trip.duration} days <span class="dot-divider">•</span> ${trip.travelers} guests</p>
+          </div>
+        </article>
+        `
+      })
+      pastTrips.forEach(trip => {
+        pendingTrips.innerHTML += `
+        <article class="trip-card">
+          <div>
+            <h3 class="past-status">PAST DATE</h3>
+            <img class="destination-image" src="${trip.destination.image}" alt="${trip.destination.alt}">
+          </div>
           <div class="trip-details">
             <h3 class="location-name">${trip.destination.location}</h3>
             <p>Departure: ${trip.date}</p>
