@@ -190,8 +190,11 @@ const authenticateUser = () => {
 
 const validateTripDate = () => {
   const today = new Date(helperFunctions.getTodayDate());
+  const todayDate = today.getDate();
+  let yesterday = new Date(today);
+  yesterday.setDate(todayDate - 1);
   const tripStartDate = new Date(startDate.value);
-  if (today > tripStartDate) {
+  if (tripStartDate <= yesterday) {
     show([invalidDateErrorMessage]);
     return false;
   } else {
