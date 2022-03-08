@@ -117,7 +117,7 @@ const getPastTrips = () => {
 const getPendingTrips = () => {
   const today = new Date();
   const myTrips = [...traveler.trips];
-  sortDateMostRecent(myTrips);
+  sortDateLeastRecent(myTrips);
   let pendingTripsUpcoming = myTrips.filter(trip => {
     let startDate = new Date(trip.date);
     return startDate > today;
