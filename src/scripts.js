@@ -1,5 +1,5 @@
 import './css/styles.scss';
-import {checkForErrors, checkForServerError, fetchData, postData} from './apiCalls';
+import {fetchData, postData} from './apiCalls';
 import domUpdates from './domUpdates';
 import helperFunctions from './utils';
 import Traveler from './Traveler';
@@ -92,7 +92,7 @@ const getUpcomingTrips = () => {
   sortDateLeastRecent(myTrips);
   let upcomingTrips = myTrips.filter(trip => {
     let startDate = new Date(trip.date);
-    return startDate > today;
+    return startDate >= today;
   }).filter(trip => trip.status === 'approved');
   if (upcomingTrips.length) {
     upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
@@ -139,11 +139,12 @@ const getAnnualTravelExpenses = () => {
 }
 
 const updateDashboard = () => {
-  domUpdates.renderName(traveler.returnFirstName());
   getUpcomingTrips();
   getPastTrips();
   getPendingTrips();
   getAnnualTravelExpenses();
+  domUpdates.renderName(traveler.returnFirstName());
+  domUpdates.createDestinationOptions(destinations);
 }
 
 const fetchTravelerAndTrips = id => {
@@ -263,7 +264,7 @@ const validateBookingForm = () => {
 
 const makeTripObject = () => {
   return {
-    id: trips.length + 1,
+    id: Date.now(),
     userID: traveler.id,
     destinationID: parseInt(tripDestination.value),
     travelers: parseInt(numberOfGuests.value),

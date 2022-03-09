@@ -21,7 +21,7 @@ const domUpdates = {
           </div>
         </article>
         `
-      })
+      });
     }
   },
   renderPendingTrips(trips, pastTrips) {
@@ -40,7 +40,7 @@ const domUpdates = {
           </div>
         </article>
         `
-      })
+      });
       pastTrips.forEach(trip => {
         pendingTrips.innerHTML += `
         <article class="trip-card">
@@ -56,7 +56,7 @@ const domUpdates = {
           </div>
         </article>
         `
-      })
+      });
     }
   },
   renderPastTrips(trips) {
@@ -89,6 +89,15 @@ const domUpdates = {
     const backgroundImage = document.querySelector('.js-background-image');
     backgroundImage.src = `${src}`;
     backgroundImage.alt = `${alt}`;
+  },
+  createDestinationOptions(destinations) {
+    const dropdownMenu = document.querySelector('.js-destination-dropdown-menu');
+    dropdownMenu.innerHTML = '<option value="0" selected disabled>Where are you going?</option>';
+    destinations.forEach(destination => {
+      dropdownMenu.innerHTML += `
+      <option value="${destination.id}">${destination.location}</option>
+      `
+    });
   }
 };
 
