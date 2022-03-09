@@ -139,11 +139,12 @@ const getAnnualTravelExpenses = () => {
 }
 
 const updateDashboard = () => {
-  domUpdates.renderName(traveler.returnFirstName());
   getUpcomingTrips();
   getPastTrips();
   getPendingTrips();
   getAnnualTravelExpenses();
+  domUpdates.renderName(traveler.returnFirstName());
+  domUpdates.createDestinationOptions(destinations);
 }
 
 const fetchTravelerAndTrips = id => {
