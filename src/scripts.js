@@ -1,5 +1,5 @@
 import './css/styles.scss';
-import {checkForErrors, checkForServerError, fetchData, postData} from './apiCalls';
+import {checkForErrors, handleServerError, fetchData, postData} from './apiCalls';
 import domUpdates from './domUpdates';
 import helperFunctions from './utils';
 import Traveler from './Traveler';
