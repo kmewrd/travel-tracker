@@ -27,4 +27,4 @@ const postData = (path, data) => {
     .catch(err => handleServerError(err));
 }
 
-export {checkForErrors, handleServerError, fetchData, postData};
+export {fetchData, postData};
