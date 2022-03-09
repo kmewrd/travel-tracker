@@ -264,7 +264,7 @@ const validateBookingForm = () => {
 
 const makeTripObject = () => {
   return {
-    id: trips.length + 1,
+    id: Date.now(),
     userID: traveler.id,
     destinationID: parseInt(tripDestination.value),
     travelers: parseInt(numberOfGuests.value),
