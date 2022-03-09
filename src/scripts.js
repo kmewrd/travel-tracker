@@ -92,7 +92,7 @@ const getUpcomingTrips = () => {
   sortDateLeastRecent(myTrips);
   let upcomingTrips = myTrips.filter(trip => {
     let startDate = new Date(trip.date);
-    return startDate > today;
+    return startDate >= today;
   }).filter(trip => trip.status === 'approved');
   if (upcomingTrips.length) {
     upcomingTrips = helperFunctions.formatDateWithDay(upcomingTrips);
