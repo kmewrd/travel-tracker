@@ -1,12 +1,12 @@
 const checkForErrors = (response) => {
   if (!response.ok) {
-    window.alert('Oops! Something went wrong. Please try again later.');
+    window.alert('Oops! Something went wrong. Please refresh the page or try again later.');
   }
 }
 
 const handleServerError = (err) => {
   if (err.message === 'Failed to fetch') {
-    window.alert('Oops! Something went wrong. Please try again later.')
+    window.alert('Oops! Something went wrong. Please refresh the page or try again later.')
   }
 }
 
@@ -14,7 +14,7 @@ const fetchData = path => {
   return fetch(`http://localhost:3001/api/v1/${path}`)
     .then(response => response.json())
     .then(data => data)
-    .catch(err => checkForServerError(err));
+    .catch(err => handleServerError(err));
 }
 
 const postData = (path, data) => {
